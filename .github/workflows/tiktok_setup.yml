@@ -1,0 +1,42 @@
+name: TikTok token setup
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "url = get the authorize link | exchange = store the token"
+        required: true
+        default: "url"
+        type: choice
+        options: [url, exchange]
+      redirect_uri:
+        description: "Exact redirect URI registered in the TikTok app"
+        required: true
+      auth_code:
+        description: "For mode=exchange only: the code= value from the redirected URL"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install deps
+        run: pip install pynacl
+      - name: Run TikTok token setup
+        env:
+          MODE: ${{ inputs.mode }}
+          REDIRECT_URI: ${{ inputs.redirect_uri }}
+          AUTH_CODE: ${{ inputs.auth_code }}
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GH_REPO: ${{ github.repository }}
+        run: python tiktok_token_setup.py

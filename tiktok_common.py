@@ -69,36 +69,46 @@ def refresh_access_token():
     return j["access_token"], j.get("open_id")
 
 
-def _maybe_rotate(new_rt, old_rt):
-    """If GH_PAT + GH_REPO are set and the refresh token changed, update the
-    GitHub Actions secret TIKTOK_REFRESH_TOKEN so the next run keeps working."""
-    if not new_rt or new_rt == old_rt:
-        return
+def write_repo_secret(name, value):
+    """Encrypt `value` with the repo's Actions public key and store it as the
+    GitHub secret `name`. Needs GH_PAT (Secrets: write) + GH_REPO. The value is
+    never printed. Returns (ok: bool, message: str)."""
     pat, repo = os.environ.get("GH_PAT"), os.environ.get("GH_REPO")
     if not (pat and repo):
-        log("NOTE: refresh token rotated. Set GH_PAT + GH_REPO to auto-persist it, "
-            "or update the TIKTOK_REFRESH_TOKEN secret manually with the value below:")
-        log("ROTATED_REFRESH_TOKEN=" + new_rt)
-        return
+        return False, "GH_PAT + GH_REPO not set"
     try:
         import nacl.public
         import nacl.encoding
     except ImportError:
-        log("NOTE: pynacl not installed; cannot auto-persist. New token:", new_rt)
-        return
+        return False, "pynacl not installed"
     api = "https://api.github.com/repos/%s/actions/secrets" % repo
     hdr = {"Authorization": "Bearer " + pat, "Accept": "application/vnd.github+json",
            "User-Agent": "beyond-obvious-bot", "X-GitHub-Api-Version": "2022-11-28"}
     code, key = _req(api + "/public-key", headers=hdr)
     if "key" not in key:
-        log("could not read repo public key (HTTP %s): %s" % (code, key)); return
+        return False, "could not read repo public key (HTTP %s): %s" % (code, key)
     pk = nacl.public.PublicKey(key["key"].encode(), nacl.encoding.Base64Encoder())
-    sealed = nacl.public.SealedBox(pk).encrypt(new_rt.encode())
+    sealed = nacl.public.SealedBox(pk).encrypt(value.encode())
     enc = base64.b64encode(sealed).decode()
-    code, _ = _req(api + "/TIKTOK_REFRESH_TOKEN",
+    code, _ = _req(api + "/" + name,
                    raw=json.dumps({"encrypted_value": enc, "key_id": key["key_id"]}).encode(),
                    headers={**hdr, "Content-Type": "application/json"}, method="PUT")
-    log("refresh token rotated and persisted to repo secret (HTTP %s)." % code)
+    if code not in (201, 204):
+        return False, "secret write failed (HTTP %s)" % code
+    return True, "stored secret %s (HTTP %s)" % (name, code)
+
+
+def _maybe_rotate(new_rt, old_rt):
+    """If the refresh token changed, persist the new one to the repo secret so the
+    next run keeps working. Falls back to a masked note if GH_PAT isn't set."""
+    if not new_rt or new_rt == old_rt:
+        return
+    ok, msg = write_repo_secret("TIKTOK_REFRESH_TOKEN", new_rt)
+    if ok:
+        log("refresh token rotated and persisted:", msg)
+    else:
+        log("NOTE: refresh token rotated but not auto-persisted (%s)." % msg)
+        log("      Set GH_PAT + GH_REPO so this happens automatically.")
 
 
 def load_json(path, default):
