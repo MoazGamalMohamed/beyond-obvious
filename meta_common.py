@@ -43,18 +43,29 @@ def get(path, tok=None, **params):
     return _req(GRAPH + "/" + path + "?" + urllib.parse.urlencode(params))
 
 
+# The Beyond Obvious Page id. The token can now see more than one Page (a second
+# brand was added to the same business portfolio), so NEVER rely on list order:
+# pick the target Page explicitly. Override per brand with the META_PAGE_ID secret.
+DEFAULT_PAGE_ID = "1413650968505167"   # Beyond Obvious
+
+
 def resolve():
     """Resolve the target from META_TOKEN, which may be a USER token or a PAGE token.
 
     Returns (page_id, page_name, page_token, ig_user_id).
-    - If a USER token is stored, /me/accounts lists the Page(s); we take the Page
-      and use its (non-expiring) Page token for posting.
+    - If a USER token is stored, /me/accounts lists the Page(s); we select the
+      Page whose id is META_PAGE_ID (default: Beyond Obvious) and use its
+      (non-expiring) Page token for posting.
     - If a PAGE token is stored, /me/accounts is empty, so we read /me directly.
     """
     data = get("me/accounts",
                fields="id,name,access_token,instagram_business_account").get("data", [])
     if data:
-        page = data[0]  # the account's Page (Beyond Obvious)
+        want = os.environ.get("META_PAGE_ID", "").strip() or DEFAULT_PAGE_ID
+        page = next((p for p in data if p["id"] == want), None)
+        if page is None:
+            names = ", ".join("%s(%s)" % (p.get("name"), p["id"]) for p in data)
+            sys.exit("META_PAGE_ID %s not among the Pages this token can see: %s" % (want, names))
         pid = page["id"]
         ptok = page["access_token"]
         ig = page.get("instagram_business_account", {}).get("id")
