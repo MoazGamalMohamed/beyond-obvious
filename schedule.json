@@ -1,7 +1,7 @@
 {
  "timezone": "America/Chicago",
  "target_local_time": "18:00",
- "note": "Weeks 1-2 auto-posting. BO-002 (Greenland, Nov 25) is handled by user manual post on FB+IG.",
+ "note": "Weeks 1-3 auto-posting. BO-002 (Greenland, Nov 25) is handled by user manual post on FB+IG. IG posts daily; FB schedules weekly.",
  "items": [
   {
    "episode": "BO-001",
@@ -93,6 +93,55 @@
    "caption": "You can't fold paper to the Moon \u2014 but the math says 42. \ud83d\udcc4\n\nEach fold doubles the thickness. 0.1 mm doubled 42 times shoots past the Moon. In real life you jam up around 7 folds: the stack becomes thicker than it is wide. That's exponential growth.\n\n#math #science #exponential #paper #learnontiktok #edutainment #sciencefacts",
    "publishAt": "2026-12-09T00:00:00Z",
    "local_time_note": "Tue Dec 08 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-015",
+   "video_file": "15_Wed-Dec09_BO-015.mp4",
+   "caption": "Why is the sky blue? \ud83c\udf24\ufe0f\n\nSunlight is every colour mixed. Air scatters short blue waves far more than red (by one over wavelength to the fourth), so blue fills the sky from every direction. At sunset the light crosses more air, the blue scatters away, and you're left with red.\n\n#physics #optics #science #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-10T00:00:00Z",
+   "local_time_note": "Wed Dec 09 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-020",
+   "video_file": "16_Thu-Dec10_BO-020.mp4",
+   "caption": "Do sinks drain backwards in Australia? \ud83c\udf00\n\nThat's a myth \u2014 the Coriolis effect is far too weak to steer a sink; the drain's shape wins. But over something huge like a hurricane it's decisive: storms spin counter-clockwise up north, clockwise down south, and can't even form right at the equator where it drops to zero.\n\n#physics #geography #weather #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-11T00:00:00Z",
+   "local_time_note": "Thu Dec 10 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-016",
+   "video_file": "17_Fri-Dec11_BO-016.mp4",
+   "caption": "How do noise-cancelling headphones erase sound? \ud83c\udfa7\n\nNot thick foam. A tiny mic samples the incoming noise, and the speaker plays that exact wave flipped upside down. Crest meets trough and they add to nothing \u2014 destructive interference.\n\n#physics #sound #waves #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-12T00:00:00Z",
+   "local_time_note": "Fri Dec 11 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-018",
+   "video_file": "18_Sat-Dec12_BO-018.mp4",
+   "caption": "Why are golf balls covered in dimples? \u26f3\n\nThey're aerodynamic. A smooth ball drags a wide wake; dimples trip the air into a thin turbulent layer that clings on, shrinking the wake and roughly halving the drag. It's called the drag crisis \u2014 and it makes the ball fly about twice as far.\n\n#physics #aerodynamics #golf #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-13T00:00:00Z",
+   "local_time_note": "Sat Dec 12 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-019",
+   "video_file": "19_Sun-Dec13_BO-019.mp4",
+   "caption": "Why doesn't the Leaning Tower of Pisa fall over? \ud83d\uddfc\n\nNo glue \u2014 just balance. A tower tips only when its centre of mass passes outside its base. Pisa's weight sits only about 2 metres off-centre, and its base is nearly 8 metres wide. It could lean to about 15 degrees before it would ever topple.\n\n#physics #engineering #architecture #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-14T00:00:00Z",
+   "local_time_note": "Sun Dec 13 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-017",
+   "video_file": "20_Mon-Dec14_BO-017.mp4",
+   "caption": "Why do we add a leap day? \ud83d\udcc5\n\nIt's not for February \u2014 it's Earth's orbit. A year is about 365.2422 days, not a round number, so that spare quarter-day piles up. We add a day every four years, then skip three leaps every 400 years. That's why 2000 counted but 1900 didn't, and it keeps the calendar within a day of the seasons for millennia.\n\n#astronomy #calendar #science #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-15T00:00:00Z",
+   "local_time_note": "Mon Dec 14 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-021",
+   "video_file": "21_Tue-Dec15_BO-021.mp4",
+   "caption": "Mountaintops are closer to the Sun, so why are they freezing? \ud83c\udfd4\ufe0f\n\nBecause a few kilometres is nothing next to 150 million km to the Sun. The real reason is pressure: air thins and expands as it rises, and expanding air cools \u2014 about 6.5 \u00b0C for every kilometre you climb.\n\n#physics #weather #atmosphere #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-16T00:00:00Z",
+   "local_time_note": "Tue Dec 15 2026, 6:00 PM America/Chicago"
   }
  ]
 }
