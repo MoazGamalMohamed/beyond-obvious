@@ -29,7 +29,7 @@ def publish_reel(ig_id, tok, video_path, caption):
                         "file_size": str(size)}, raw=f.read(), method="POST")
     # 3) poll until the container is FINISHED (<=5 min)
     for _ in range(30):
-        st = M.get("%s" % cid, fields="status_code")
+        st = M.get("%s" % cid, tok=tok, fields="status_code")
         code = st.get("status_code")
         if code == "FINISHED":
             break
@@ -45,8 +45,7 @@ def publish_reel(ig_id, tok, video_path, caption):
 
 
 def main():
-    tok = M.token()
-    page_id, name, ig_id = M.resolve_ids()
+    page_id, name, tok, ig_id = M.resolve()
     if not ig_id:
         sys.exit("No Instagram business account is linked to this Page. "
                  "Link the IG (Creator) account to the Page and retry.")

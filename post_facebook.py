@@ -36,8 +36,7 @@ def post_reel(page_id, tok, video_path, description, publish_unix):
 
 
 def main():
-    tok = M.token()
-    page_id, name, _ = M.resolve_ids()
+    page_id, name, tok, _ = M.resolve()
     M.log("Facebook Page:", name, page_id)
     sched = M.load_json(SCHEDULE, {"items": []})
     state = M.load_json(STATE, {"posted": {}})

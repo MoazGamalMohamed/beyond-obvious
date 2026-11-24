@@ -38,17 +38,37 @@ def _req(url, data=None, headers=None, method=None, raw=None):
         raise RuntimeError("HTTP %s: %s" % (e.code, detail))
 
 
-def get(path, **params):
-    params["access_token"] = token()
+def get(path, tok=None, **params):
+    params["access_token"] = tok or token()
     return _req(GRAPH + "/" + path + "?" + urllib.parse.urlencode(params))
 
 
-def resolve_ids():
-    """Return (page_id, page_name, ig_user_id or None) from the Page token."""
+def resolve():
+    """Resolve the target from META_TOKEN, which may be a USER token or a PAGE token.
+
+    Returns (page_id, page_name, page_token, ig_user_id).
+    - If a USER token is stored, /me/accounts lists the Page(s); we take the Page
+      and use its (non-expiring) Page token for posting.
+    - If a PAGE token is stored, /me/accounts is empty, so we read /me directly.
+    """
+    data = get("me/accounts",
+               fields="id,name,access_token,instagram_business_account").get("data", [])
+    if data:
+        page = data[0]  # the account's Page (Beyond Obvious)
+        pid = page["id"]
+        ptok = page["access_token"]
+        ig = page.get("instagram_business_account", {}).get("id")
+        return pid, page.get("name", ""), ptok, ig
+    # fall back: the stored token is already a Page token
     me = get("me", fields="id,name,instagram_business_account")
-    page_id = me["id"]
-    ig = me.get("instagram_business_account", {}).get("id")
-    return page_id, me.get("name", ""), ig
+    return me["id"], me.get("name", ""), token(), \
+        me.get("instagram_business_account", {}).get("id")
+
+
+# backwards-compatible helper (page token discarded)
+def resolve_ids():
+    pid, name, _ptok, ig = resolve()
+    return pid, name, ig
 
 
 def load_json(path, default):
