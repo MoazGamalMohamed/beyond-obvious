@@ -14,6 +14,14 @@ SCHEDULE = os.path.join(HERE, "schedule.json")
 STATE = os.path.join(HERE, "state_ig.json")
 VIDEOS = os.path.join(HERE, "videos")
 
+# Reach booster appended to every caption (CTA + extra discovery hashtags).
+BOOST = ("\n\nNew science short every day — follow @beyondobvious for your daily "
+         "dose of \"wait, really?\"\n"
+         "#sciencefacts #didyouknow #stem #funfacts #educational #sciencetok #learnsomething")
+# Author's first comment, posted right after publish (extra reach; needs
+# instagram_manage_comments — skipped automatically if not granted).
+FIRST_COMMENT = "Which one surprised you? \U0001f447 Follow for a new science short every day!"
+
 
 def publish_reel(ig_id, tok, video_path, caption):
     # 1) create a resumable Reels container
@@ -65,10 +73,17 @@ def main():
     if not os.path.exists(vpath):
         sys.exit("MISSING video: %s" % vpath)
     M.log("publishing IG reel:", due["episode"], due["local_time_note"])
-    mid = publish_reel(ig_id, tok, vpath, due["caption"])
+    mid = publish_reel(ig_id, tok, vpath, due["caption"] + BOOST)
     state["posted"][due["video_file"]] = mid
     M.save_json(STATE, state)
     M.log("  published id=", mid)
+    # reach booster: author's first comment (best-effort)
+    try:
+        M._req("%s/%s/comments" % (M.GRAPH, mid),
+               data={"message": FIRST_COMMENT, "access_token": tok}, method="POST")
+        M.log("  first comment posted")
+    except Exception as e:
+        M.log("  first comment skipped:", e)
 
 
 if __name__ == "__main__":

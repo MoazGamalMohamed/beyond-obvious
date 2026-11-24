@@ -14,6 +14,12 @@ SCHEDULE = os.path.join(HERE, "schedule.json")
 STATE = os.path.join(HERE, "state_fb.json")
 VIDEOS = os.path.join(HERE, "videos")
 
+# Reach booster appended to every NEW reel description (CTA + discovery hashtags).
+# Reels already in state_fb.json keep their original caption.
+BOOST = ("\n\nNew science short every day — follow Beyond Obvious for your daily "
+         "dose of \"wait, really?\"\n"
+         "#sciencefacts #didyouknow #stem #funfacts #educational #reels #learnsomething")
+
 
 def post_reel(page_id, tok, video_path, description, publish_unix):
     # 1) start
@@ -53,7 +59,7 @@ def main():
         if not os.path.exists(vpath):
             M.log("MISSING:", vpath); continue
         M.log("scheduling FB reel:", it["episode"], it["local_time_note"])
-        vid = post_reel(page_id, tok, vpath, it["caption"], pub)
+        vid = post_reel(page_id, tok, vpath, it["caption"] + BOOST, pub)
         state["posted"][key] = vid
         M.save_json(STATE, state)
         M.log("  scheduled id=", vid)
