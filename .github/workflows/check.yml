@@ -17,3 +17,7 @@ jobs:
         env:
           META_TOKEN: ${{ secrets.META_TOKEN }}
         run: python list_posts.py
+      - name: Monetization-readiness check (read-only)
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+        run: python readiness.py
