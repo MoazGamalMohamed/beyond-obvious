@@ -3,9 +3,7 @@
 GitHub Actions secrets this uses:
   TIKTOK_CLIENT_KEY     - app client key   (TikTok for Developers portal)
   TIKTOK_CLIENT_SECRET  - app client secret
-  TIKTOK_REFRESH_TOKEN  - OAuth refresh token (get once via tiktok_oauth.py)
-  TIKTOK_PRIVACY        - optional: SELF_ONLY (default, pre-audit) or
-                          PUBLIC_TO_EVERYONE (after the app passes TikTok's audit)
+  TIKTOK_REFRESH_TOKEN  - OAuth refresh token (get once via the setup workflow)
   GH_PAT + GH_REPO      - optional but recommended: lets the daily job write the
                           rotated refresh token back into the repo secret, so it
                           stays hands-free. GH_PAT = fine-grained PAT with

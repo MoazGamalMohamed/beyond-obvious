@@ -1,0 +1,32 @@
+name: TikTok test send (inbox)
+
+on:
+  workflow_dispatch:
+    inputs:
+      file:
+        description: "Video filename under videos/ (leave blank for the default short)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  testsend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install deps (only to auto-rotate the refresh token)
+        run: pip install pynacl
+      - name: Send one video to the TikTok inbox
+        env:
+          FILE: ${{ inputs.file }}
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GH_REPO: ${{ github.repository }}
+        run: python tiktok_testpost.py

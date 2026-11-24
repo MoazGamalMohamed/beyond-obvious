@@ -16,7 +16,9 @@ import urllib.parse
 import tiktok_common as T
 
 AUTH = "https://www.tiktok.com/v2/auth/authorize/"
-SCOPES = "user.info.basic,video.publish,video.upload"
+# Inbox-upload flow only. Request exactly the scopes the demo shows - asking for
+# video.publish too (Direct Post) is a common app-review rejection reason.
+SCOPES = "user.info.basic,video.upload"
 
 
 def main():

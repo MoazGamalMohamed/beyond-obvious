@@ -1,4 +1,4 @@
-name: TikTok (daily post)
+name: TikTok (daily inbox send)
 
 on:
   schedule:
@@ -23,7 +23,6 @@ jobs:
           TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
           TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
           TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
-          TIKTOK_PRIVACY: ${{ secrets.TIKTOK_PRIVACY }}
           GH_PAT: ${{ secrets.GH_PAT }}
           GH_REPO: ${{ github.repository }}
         run: python tiktok_post.py
