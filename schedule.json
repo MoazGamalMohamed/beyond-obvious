@@ -1,15 +1,8 @@
 {
  "timezone": "America/Chicago",
  "target_local_time": "18:00",
- "note": "Weeks 1-2 auto-posting (BO-002 re-added: not found on Page).",
+ "note": "Weeks 1-2 auto-posting. BO-002 (Greenland, Nov 25) is handled by user manual post on FB+IG.",
  "items": [
-  {
-   "episode": "BO-002",
-   "video_file": "01_Wed-Nov25_BO-002.mp4",
-   "caption": "Greenland is NOT the size of Africa. \ud83d\uddfa\ufe0f\n\nOn most maps they look similar \u2014 but Africa is about 14 times bigger. Blame the Mercator projection (1569): it stretches everything near the poles. Africa ~30 million km\u00b2, Greenland ~2.2 million.\n\n#geography #maps #mercator #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-11-26T00:00:00Z",
-   "local_time_note": "Wed Nov 25 2026, 6:00 PM America/Chicago"
-  },
   {
    "episode": "BO-001",
    "video_file": "02_Thu-Nov26_BO-001.mp4",
