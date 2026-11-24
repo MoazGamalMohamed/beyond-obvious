@@ -1,0 +1,29 @@
+name: Facebook Reels (weekly schedule)
+
+on:
+  schedule:
+    - cron: "17 15 * * 1"   # Mondays ~15:17 UTC
+  workflow_dispatch: {}      # allow manual run
+
+permissions:
+  contents: write            # to commit the state file back
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Schedule this week's Facebook Reels
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+        run: python post_facebook.py
+      - name: Save state
+        run: |
+          git config user.name "beyond-obvious-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add state_fb.json || true
+          git commit -m "update facebook state" || echo "no changes"
+          git push || echo "nothing to push"

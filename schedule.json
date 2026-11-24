@@ -1,0 +1,56 @@
+{
+ "timezone": "America/Chicago",
+ "target_local_time": "18:00",
+ "note": "publishAt is UTC = 6 PM America/Chicago. FB reels are scheduled; IG reels post on the day (API can't pre-schedule).",
+ "items": [
+  {
+   "episode": "BO-002",
+   "video_file": "01_Wed-Nov25_BO-002.mp4",
+   "caption": "Greenland looks as big as Africa on most maps. It's about 14 times smaller. Blame Mercator (1569).\n\nAnimated cartoon. Voices are synthetic (AI text-to-speech).\n\n#geography #maps #mercator #learnontiktok #edutainment",
+   "publishAt": "2026-11-26T00:00:00Z",
+   "local_time_note": "Wed Nov 25 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-001",
+   "video_file": "02_Thu-Nov26_BO-001.mp4",
+   "caption": "Birds sit on live wires all day. Here's why they don't get zapped (and why big birds sometimes do).\n\nAnimated cartoon. Voices are synthetic (AI text-to-speech).\n\n#physics #electricity #science #learnontiktok #edutainment",
+   "publishAt": "2026-11-27T00:00:00Z",
+   "local_time_note": "Thu Nov 26 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-003",
+   "video_file": "03_Fri-Nov27_BO-003.mp4",
+   "caption": "Square plane windows? Engineers learned the hard way. Rounded corners spread the stress.\n\nAnimated cartoon. Voices are synthetic (AI text-to-speech).\n\n#engineering #aviation #planes #learnontiktok #edutainment",
+   "publishAt": "2026-11-28T00:00:00Z",
+   "local_time_note": "Fri Nov 27 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-004",
+   "video_file": "04_Sat-Nov28_BO-004.mp4",
+   "caption": "Without Einstein, your GPS would drift by kilometres every day. Here's why the satellites' clocks are set to run slow.\n\nAnimated cartoon. Voices are synthetic (AI text-to-speech).\n\n#physics #relativity #gps #einstein #edutainment",
+   "publishAt": "2026-11-29T00:00:00Z",
+   "local_time_note": "Sat Nov 28 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-006",
+   "video_file": "05_Sun-Nov29_BO-006.mp4",
+   "caption": "10,000 years ago the Sahara had lakes, grass and hippos. A slow wobble of Earth's axis explains it.\n\nAnimated cartoon. Voices are synthetic (AI text-to-speech).\n\n#geography #sahara #climate #earthscience #edutainment",
+   "publishAt": "2026-11-30T00:00:00Z",
+   "local_time_note": "Sun Nov 29 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-005",
+   "video_file": "06_Mon-Nov30_BO-005.mp4",
+   "caption": "A steel ball sinks. The same steel shaped like a bowl floats. Archimedes explains (and Noodle tests it).\n\nAnimated cartoon. Voices are synthetic (AI text-to-speech).\n\n#physics #archimedes #ships #buoyancy #edutainment",
+   "publishAt": "2026-12-01T00:00:00Z",
+   "local_time_note": "Mon Nov 30 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-007",
+   "video_file": "07_Tue-Dec01_BO-007.mp4",
+   "caption": "London, June 2000: a brand-new footbridge started to sway and closed after two days. The crowd was the problem.\n\nAnimated cartoon. Voices are synthetic (AI text-to-speech).\n\n#engineering #resonance #bridges #physics #edutainment",
+   "publishAt": "2026-12-02T00:00:00Z",
+   "local_time_note": "Tue Dec 01 2026, 6:00 PM America/Chicago"
+  }
+ ]
+}
