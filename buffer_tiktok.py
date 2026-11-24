@@ -146,6 +146,15 @@ def main():
         log("next item to auto-post:", nxt[0] if nxt else "none queued yet")
         return
 
+    if mode == "validate":
+        # Schema check with no side effects: a channel id that is not ours can
+        # never publish. "Channel not found"-style reply = request shape is valid;
+        # a GraphQL "errors" reply = the shape needs fixing.
+        pid, err = create_post(key, "000000000000000000000000", "validation only",
+                               BASES[0] + "02_Thu-Nov26_BO-001.mp4")
+        log("validate:", "UNEXPECTED post %s" % pid if pid else err)
+        return
+
     sched = load(SCHEDULE, {"items": []})
     state = load(STATE, {"posted": {}})
     it = due_item(sched, state, start)

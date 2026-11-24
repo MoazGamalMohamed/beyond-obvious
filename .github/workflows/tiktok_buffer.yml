@@ -10,7 +10,7 @@ on:
         required: true
         default: "check"
         type: choice
-        options: [check, post]
+        options: [check, validate, post]
 
 permissions:
   contents: write             # to commit state_buffer.json back
