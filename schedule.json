@@ -1,7 +1,7 @@
 {
  "timezone": "America/Chicago",
  "target_local_time": "18:00",
- "note": "Weeks 1-3 auto-posting. BO-002 (Greenland, Nov 25) is handled by user manual post on FB+IG. IG posts daily; FB schedules weekly.",
+ "note": "Weeks 1-4 auto-posting. BO-002 (Greenland, Nov 25) was posted by hand on FB+IG. IG posts daily; FB schedules weekly; TikTok goes through Buffer from week 4 (weeks 1-3 were uploaded to TikTok by hand).",
  "items": [
   {
    "episode": "BO-001",
@@ -142,6 +142,55 @@
    "caption": "Mountaintops are closer to the Sun, so why are they freezing? \ud83c\udfd4\ufe0f\n\nBecause a few kilometres is nothing next to 150 million km to the Sun. The real reason is pressure: air thins and expands as it rises, and expanding air cools \u2014 about 6.5 \u00b0C for every kilometre you climb.\n\n#physics #weather #atmosphere #learnontiktok #edutainment #sciencefacts",
    "publishAt": "2026-12-16T00:00:00Z",
    "local_time_note": "Tue Dec 15 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-023",
+   "video_file": "22_Wed-Dec16_BO-023.mp4",
+   "caption": "Astronauts float because there's no gravity in space... right? \ud83d\ude80\n\nWrong - gravity up there is still about 90% as strong as down here. They float because they're falling the whole time, while moving sideways at nearly 8 km every second. The ground curves away as fast as they fall, so they keep missing the Earth. That endless fall is an orbit.\n\n#space #physics #astronauts #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-17T00:00:00Z",
+   "local_time_note": "Wed Dec 16 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-024",
+   "video_file": "23_Thu-Dec17_BO-024.mp4",
+   "caption": "Why does metal feel colder than wood? \ud83e\udd76\n\nIt isn't colder - both are at room temperature. Your skin doesn't feel temperature, it feels heat leaving. Metal pulls heat out of your hand fast, so your skin drops to about 21 \u00b0C. Wood barely takes any, so it stays near 30 \u00b0C. Same reason tiles feel colder than a rug.\n\n#physics #heat #science #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-18T00:00:00Z",
+   "local_time_note": "Thu Dec 17 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-027",
+   "video_file": "24_Fri-Dec18_BO-027.mp4",
+   "caption": "Why can't you ever reach the end of a rainbow? \ud83c\udf08\n\nBecause it isn't a thing in a place. Sunlight enters each raindrop, bounces off the back and comes out bent at about 42 degrees. The rainbow is every drop sitting at that angle from your eye - move and it moves with you. It's really a full circle; the ground just hides the bottom half.\n\n#physics #optics #light #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-19T00:00:00Z",
+   "local_time_note": "Fri Dec 18 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-025",
+   "video_file": "25_Sat-Dec19_BO-025.mp4",
+   "caption": "If you can see into a microwave, why can't the microwaves get out? \ud83c\udf7f\n\nThe glass hides a metal mesh with holes about a millimetre wide. A microwave is a wave 12 cm long - far too big to squeeze through, so it bounces back. Light waves are thousands of times smaller than the holes, so they sail right out. You get the view, the popcorn gets the heat.\n\n#physics #waves #technology #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-20T00:00:00Z",
+   "local_time_note": "Sat Dec 19 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-022",
+   "video_file": "26_Sun-Dec20_BO-022.mp4",
+   "caption": "Why do stars twinkle but planets don't? \u2728\n\nThe star isn't flickering - our air is. Moving pockets of warm and cold air bend the light back and forth in its last split second. A star is a single point, so the whole thing wobbles. A planet is a tiny disc, so its wobbles average out. From space, stars don't twinkle at all.\n\n#astronomy #space #stars #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-21T00:00:00Z",
+   "local_time_note": "Sun Dec 20 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-026",
+   "video_file": "27_Mon-Dec21_BO-026.mp4",
+   "caption": "Rivers are fresh, so why is the sea salty? \ud83c\udf0a\n\nThe salt comes from the rivers. Rain slowly dissolves rock, and rivers carry a tiny pinch of those minerals to the sea. Then the Sun evaporates the water, but the salt stays behind. Repeat for a few billion years and every litre of seawater holds about 35 grams of salt.\n\n#earthscience #ocean #geography #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-22T00:00:00Z",
+   "local_time_note": "Mon Dec 21 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-028",
+   "video_file": "28_Tue-Dec22_BO-028.mp4",
+   "caption": "One Moon... so why two high tides a day? \ud83c\udf15\n\nThe Moon pulls hardest on the near side of the Earth and weakest on the far side. That difference stretches the ocean into two bulges - one facing the Moon, one facing away. The Earth spins under both, so high tide comes about every 12 and a half hours.\n\n#physics #ocean #moon #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-23T00:00:00Z",
+   "local_time_note": "Tue Dec 22 2026, 6:00 PM America/Chicago"
   }
  ]
 }

@@ -6,13 +6,15 @@ already an audited TikTok partner, and its API (included on the Free plan) can
 publish a video from a public URL. So this job hands today's short to Buffer and
 Buffer publishes it to TikTok - no TikTok developer app, no audit, no demo video.
 
-Runs daily. Reads schedule.json, finds the item due in this posting slot and
-creates a Buffer post (mode shareNow, automatic publishing) on the TikTok
-channel. Idempotent via state_buffer.json.
+Runs daily. Reads schedule.json and PRE-SCHEDULES every upcoming item inside
+Buffer (mode customScheduled, dueAt = the 6 PM slot, automatic publishing), up to
+the Free-plan queue size; Buffer then publishes on time by itself. A slot that
+has just passed unscheduled is published immediately. Idempotent via
+state_buffer.json.
 
 Secrets:  BUFFER_API_KEY            (Buffer -> Settings -> API)
 Optional: BUFFER_TIKTOK_CHANNEL_ID  (auto-discovered when unset)
-Env:      MODE = post (default) | check   (check lists channels, posts nothing)
+Env:      MODE = post (default) | check | validate   (the last two post nothing)
 
 tiktok_auto.json holds {"start_publishAt": ISO}: items scheduled before it are
 treated as already posted by hand and are never sent (prevents duplicates).
@@ -41,6 +43,7 @@ BASES = [b for b in [
 BOOST = ("\n\nNew science short every day - follow Beyond Obvious."
          " #fyp #foryou #sciencetok #learnontiktok #stem")
 DUE_WINDOW = datetime.timedelta(hours=18)
+MAX_QUEUE = 9          # Buffer Free keeps at most 10 scheduled posts per channel
 
 
 def log(*a):
@@ -92,13 +95,15 @@ def tiktok_channel(key):
     return tt[0]["id"]
 
 
-def create_post(key, channel_id, text, video_url):
+def create_post(key, channel_id, text, video_url, due_at=None):
+    """due_at=None publishes now; otherwise Buffer holds it until due_at (UTC ISO)."""
+    when = ("mode: customScheduled, dueAt: %s" % gstr(due_at)) if due_at else "mode: shareNow"
     q = ("mutation { createPost(input: { text: %s, channelId: %s, "
-         "schedulingType: automatic, mode: shareNow, "
+         "schedulingType: automatic, %s, "
          "assets: [{ video: { url: %s, metadata: { thumbnailOffset: 1000 } } }] }) { "
          "... on PostActionSuccess { post { id } } "
          "... on MutationError { message } } }"
-         % (gstr(text), gstr(channel_id), gstr(video_url)))
+         % (gstr(text), gstr(channel_id), when, gstr(video_url)))
     st, j = gql(key, q)
     res = (j.get("data") or {}).get("createPost") or {}
     pid = (res.get("post") or {}).get("id")
@@ -113,17 +118,23 @@ def iso(s):
     return datetime.datetime.fromisoformat(s.replace("Z", "+00:00"))
 
 
-def due_item(sched, state, start):
+def plan(sched, state, start):
+    """Items still to hand to Buffer: [(publish_time, item, due_at_or_None)].
+    Future slots are pre-scheduled inside Buffer (it publishes them on time even
+    if this job never runs again); a slot that just passed is published now."""
     now = datetime.datetime.now(datetime.timezone.utc)
-    best = None
-    for it in sched["items"]:
+    out = []
+    for it in sorted(sched["items"], key=lambda i: i["publishAt"]):
         pub = iso(it["publishAt"])
         if it["video_file"] in state["posted"] or pub < start:
             continue
-        if pub <= now and (now - pub) <= DUE_WINDOW:
-            if best is None or pub > best[0]:
-                best = (pub, it)
-    return best[1] if best else None
+        if pub > now + datetime.timedelta(minutes=10):
+            out.append((pub, it, pub.strftime("%Y-%m-%dT%H:%M:%S.000Z")))
+        elif (now - pub) <= DUE_WINDOW:
+            out.append((pub, it, None))
+        else:
+            log("missed slot, not posting late:", it["episode"], it["publishAt"])
+    return out[:MAX_QUEUE]
 
 
 def main():
@@ -133,6 +144,8 @@ def main():
     mode = (os.environ.get("MODE") or "post").strip()
     cfg = load(CONFIG, {})
     start = iso(cfg.get("start_publishAt", "2026-12-16T12:00:00Z"))
+    sched = load(SCHEDULE, {"items": []})
+    state = load(STATE, {"posted": {}})
 
     if mode == "check":
         chs = channels(key)
@@ -141,40 +154,50 @@ def main():
         tt = [c for c in chs if "tiktok" in (c.get("service") or "").lower()]
         log("TikTok connected:", "YES" if tt else "NO - connect TikTok in Buffer")
         log("auto-posting starts with items scheduled at/after", start.isoformat())
-        sched = load(SCHEDULE, {"items": []})
-        nxt = sorted(i["publishAt"] for i in sched["items"] if iso(i["publishAt"]) >= start)
-        log("next item to auto-post:", nxt[0] if nxt else "none queued yet")
+        todo = plan(sched, state, start)
+        log("already handed to Buffer:", len(state["posted"]), "| still to hand over:", len(todo))
+        for pub, it, due in todo:
+            log("  pending:", it["episode"], it["publishAt"])
         return
 
     if mode == "validate":
         # Schema check with no side effects: a channel id that is not ours can
         # never publish. "Channel not found"-style reply = request shape is valid;
         # a GraphQL "errors" reply = the shape needs fixing.
-        pid, err = create_post(key, "000000000000000000000000", "validation only",
-                               BASES[0] + "02_Thu-Nov26_BO-001.mp4")
-        log("validate:", "UNEXPECTED post %s" % pid if pid else err)
+        for due in (None, "2027-01-01T00:00:00.000Z"):
+            pid, err = create_post(key, "000000000000000000000000", "validation only",
+                                   BASES[0] + "02_Thu-Nov26_BO-001.mp4", due)
+            log("validate (%s):" % ("scheduled" if due else "now"),
+                "UNEXPECTED post %s" % pid if pid else err)
         return
 
-    sched = load(SCHEDULE, {"items": []})
-    state = load(STATE, {"posted": {}})
-    it = due_item(sched, state, start)
-    if not it:
-        log("No TikTok item due in this slot."); return
+    todo = plan(sched, state, start)
+    if not todo:
+        log("Nothing new to hand to Buffer."); return
     cid = tiktok_channel(key)
-    text = it["caption"] + BOOST
-    pid, err = None, None
-    for base in BASES:
-        url = base + it["video_file"]
-        log("posting via Buffer:", it["episode"], "|", url)
-        pid, err = create_post(key, cid, text, url)
-        if pid:
+    failed = []
+    for pub, it, due in todo:
+        text = it["caption"] + BOOST
+        pid, err = None, None
+        for base in BASES:
+            url = base + it["video_file"]
+            log(("scheduling %s for %s" % (it["episode"], due)) if due else
+                ("publishing %s now" % it["episode"]), "|", url)
+            pid, err = create_post(key, cid, text, url, due)
+            if pid or "limit" in (err or "").lower():
+                break
+            log("  Buffer said:", err)
+        if not pid and "limit" in (err or "").lower():
+            log("  Buffer queue is full (%s) - the rest go in on a later run." % err)
             break
-        log("  Buffer said:", err)
-    if not pid:
-        sys.exit("Buffer post failed: %s" % err)
-    state["posted"][it["video_file"]] = {"buffer_post_id": pid, "episode": it["episode"]}
-    json.dump(state, open(STATE, "w"), indent=1)
-    log("  done - Buffer post", pid, "is publishing to TikTok.")
+        if not pid:
+            failed.append("%s: %s" % (it["episode"], err)); continue
+        state["posted"][it["video_file"]] = {"buffer_post_id": pid, "episode": it["episode"],
+                                             "dueAt": due or "now"}
+        json.dump(state, open(STATE, "w"), indent=1)
+        log("  ok - Buffer post", pid)
+    if failed:
+        sys.exit("Buffer refused: " + " | ".join(failed))
 
 
 if __name__ == "__main__":
