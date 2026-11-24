@@ -13,3 +13,7 @@ jobs:
         env:
           META_TOKEN: ${{ secrets.META_TOKEN }}
         run: python check_meta.py
+      - name: List already-published posts (read-only)
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+        run: python list_posts.py
