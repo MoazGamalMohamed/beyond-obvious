@@ -1,8 +1,28 @@
-"""Read-only: list what is already published on the FB Page and Instagram.
-Posts nothing. Used to double-check which videos were posted manually."""
+"""Read-only: list what is already published OR scheduled on the FB Page and
+Instagram. Posts nothing. Used to double-check which videos were posted manually."""
+import datetime
 import meta_common as M
 
 pid, name, ptok, ig = M.resolve()
+
+print("=== FACEBOOK SCHEDULED (unpublished) ===")
+for edge in ("scheduled_posts", "video_reels"):
+    try:
+        params = dict(limit=50)
+        if edge == "scheduled_posts":
+            params["fields"] = "id,scheduled_publish_time,message"
+        else:
+            # include unpublished reels and their scheduled time
+            params["fields"] = "id,title,description,created_time,scheduled_publish_time,is_published"
+        rows = M.get("%s/%s" % (pid, edge), tok=ptok, **params).get("data", [])
+        print(edge, ":", len(rows))
+        for r in rows:
+            spt = r.get("scheduled_publish_time")
+            when = datetime.datetime.utcfromtimestamp(int(spt)).strftime("%Y-%m-%d %H:%MZ") if spt else "?"
+            txt = (r.get("message") or r.get("description") or r.get("title") or "").replace("\n", " ")[:55]
+            print("  ", edge, r.get("id"), "sched=" + when, "pub=" + str(r.get("is_published")), "|", txt)
+    except Exception as e:
+        print("  ", edge, "error:", e)
 
 print("=== FACEBOOK PAGE:", name, "(", pid, ") ===")
 try:
