@@ -1,0 +1,39 @@
+name: TikTok via Buffer (daily, hands-free)
+
+on:
+  schedule:
+    - cron: "0 0 * * *"      # 00:00 UTC daily = 6:00 PM America/Chicago (CST)
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "check = verify the Buffer connection (posts nothing) | post = run today's post"
+        required: true
+        default: "check"
+        type: choice
+        options: [check, post]
+
+permissions:
+  contents: write             # to commit state_buffer.json back
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: TikTok via Buffer
+        env:
+          MODE: ${{ inputs.mode || 'post' }}
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          BUFFER_TIKTOK_CHANNEL_ID: ${{ secrets.BUFFER_TIKTOK_CHANNEL_ID }}
+          GH_REPO: ${{ github.repository }}
+        run: python buffer_tiktok.py
+      - name: Save state
+        run: |
+          git config user.name "beyond-obvious-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add state_buffer.json || true
+          git commit -m "update buffer tiktok state" || echo "no changes"
+          git push || echo "nothing to push"

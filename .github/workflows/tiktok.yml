@@ -1,9 +1,7 @@
 name: TikTok (daily inbox send)
 
 on:
-  schedule:
-    - cron: "0 0 * * *"      # 00:00 UTC daily = 6:00 PM America/Chicago (CST)
-  workflow_dispatch: {}       # allow manual run
+  workflow_dispatch: {}       # manual only: daily TikTok now runs via tiktok_buffer.yml
 
 permissions:
   contents: write             # to commit state_tiktok.json back
