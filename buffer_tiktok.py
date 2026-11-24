@@ -81,8 +81,20 @@ def channels(key):
     for o in orgs:
         st, j = gql(key, "query($o: OrganizationId!) { channels(input: "
                          "{ organizationId: $o }) { id name service } }", {"o": o["id"]})
-        out += ((j.get("data") or {}).get("channels")) or []
+        out += [dict(c, org=o["id"]) for c in (((j.get("data") or {}).get("channels")) or [])]
     return out
+
+
+def queued_posts(key, org_id, channel_id):
+    """Posts Buffer currently holds for the channel: [(dueAt, status, id)]."""
+    q = ("query { posts(first: 50, input: { organizationId: %s, filter: { channelIds: [%s] }, "
+         "sort: [{ field: dueAt, direction: asc }] }) { edges { node { id status dueAt } } } }"
+         % (gstr(org_id), gstr(channel_id)))
+    st, j = gql(key, q)
+    edges = (((j.get("data") or {}).get("posts")) or {}).get("edges")
+    if edges is None:
+        log("could not list posts (HTTP %s): %s" % (st, str(j)[:400])); return []
+    return [(e["node"].get("dueAt"), e["node"].get("status"), e["node"].get("id")) for e in edges]
 
 
 def tiktok_channel(key):
@@ -158,6 +170,10 @@ def main():
         log("already handed to Buffer:", len(state["posted"]), "| still to hand over:", len(todo))
         for pub, it, due in todo:
             log("  pending:", it["episode"], it["publishAt"])
+        ours = {v.get("buffer_post_id"): v.get("episode") for v in state["posted"].values()}
+        for c in tt:
+            for due, status, pid in queued_posts(key, c["org"], c["id"]):
+                log("  in Buffer:", due, "|", status, "|", ours.get(pid, "(not from this job)"))
         return
 
     if mode == "validate":
