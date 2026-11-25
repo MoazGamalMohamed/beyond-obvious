@@ -170,7 +170,7 @@ def main():
     if mode == "check":
         chs = channels(key)
         for c in chs:
-            log("channel:", c.get("service"), "|", c.get("name"))
+            log("channel:", c.get("service"), "|", c.get("name"), "| id:", c.get("id"))
         tt = [c for c in chs if "tiktok" in (c.get("service") or "").lower()]
         log("TikTok connected:", "YES" if tt else "NO - connect TikTok in Buffer")
         log("auto-posting starts with items scheduled at/after", start.isoformat())
