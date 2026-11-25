@@ -1,15 +1,21 @@
-name: What If Lab — TikTok via Buffer (manual until channel connected)
+name: What If Lab — TikTok via Buffer
 
-# No schedule cron yet: TikTok for What If Lab stays OFF until (1) the What If Lab
-# TikTok is connected in Buffer and (2) its channel id is stored as the
-# BUFFER_WHATIFLAB_CHANNEL_ID secret. REQUIRE_CHANNEL_ID=1 makes the script refuse
-# to run without that id, so it can never post What If Lab to the Beyond Obvious
-# TikTok channel. Run in 'check' mode first to read the new channel id.
+# What If Lab's own TikTok is connected in Buffer (channel "whatiflabmoaz").
+# Its Buffer channel id is pinned below. A Buffer channel id is an object id, not
+# a credential, so it is safe to keep in the repo and it makes the target channel
+# auditable: this job can only ever post to What If Lab, never to the Beyond
+# Obvious TikTok. REQUIRE_CHANNEL_ID=1 is kept as a guard — if the id were ever
+# removed the script refuses to auto-pick a channel rather than risk the wrong one.
+# BUFFER_API_KEY stays a secret. Buffer pre-schedules each short and publishes it
+# at its slot on its own, so the daily cron only needs to hand over new/upcoming
+# videos; it is idempotent via state_buffer_wl.json (no double-posting).
 on:
+  schedule:
+    - cron: "30 20 * * *"   # daily 20:30 UTC — hand upcoming What If Lab shorts to Buffer
   workflow_dispatch:
     inputs:
       mode:
-        description: "check = list Buffer channels / find the What If Lab id (posts nothing) | post = run"
+        description: "check = list Buffer channels (posts nothing) | validate | post = hand shorts to Buffer"
         required: true
         default: "check"
         type: choice
@@ -28,9 +34,11 @@ jobs:
           python-version: "3.11"
       - name: What If Lab TikTok via Buffer
         env:
-          MODE: ${{ inputs.mode || 'check' }}
+          # Scheduled (cron) runs have no input and default to 'post'; a manual
+          # "Run workflow" click defaults to the safe 'check' via the input above.
+          MODE: ${{ inputs.mode || 'post' }}
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
-          BUFFER_TIKTOK_CHANNEL_ID: ${{ secrets.BUFFER_WHATIFLAB_CHANNEL_ID }}
+          BUFFER_TIKTOK_CHANNEL_ID: "6b061b9c8541f09ecb92ed0c"   # Buffer channel "whatiflabmoaz"
           REQUIRE_CHANNEL_ID: "1"
           SCHEDULE_FILE: schedule_whatiflab.json
           STATE_FILE: state_buffer_wl.json
