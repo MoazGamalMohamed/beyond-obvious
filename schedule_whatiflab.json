@@ -1,0 +1,60 @@
+{
+  "_brand": "What If Lab",
+  "_note": "Week-1 everyday-myth schedule for What If Lab (Kiki + Bruno). Read ONLY by the *_wl workflows, which set META_PAGE_ID=1484071088120232 and brand-specific STATE files, so this can never post to Beyond Obvious. publishAt is UTC; 21:00Z = 3:00 PM America/Chicago, a slot kept distinct from Beyond Obvious's 6 PM.",
+  "timezone": "America/Chicago",
+  "target_local_time": "15:00",
+  "meta_page_id": "1484071088120232",
+  "_boost": "\n\nOne everyday myth, busted every day — follow What If Lab!\n#didyouknow #mythbusting #funfacts #learnontiktok #curiousfacts #reels",
+  "_first_comment": "Did this one surprise you? 👀 Follow What If Lab for a myth busted every day!",
+  "items": [
+    {
+      "episode": "WL-001",
+      "video_file": "WL-001_swallowed-gum.mp4",
+      "caption": "Swallowed gum stays in you for seven years, right? 🤔 Nope — it's out in a few days. Your body can't digest gum, but it keeps it moving. 🦜🐶\n\nAnimated cartoon. Voices are synthetic (AI text-to-speech).",
+      "publishAt": "2026-11-25T21:00:00Z",
+      "local_time_note": "Tue Nov 25 2026, 3:00 PM America/Chicago"
+    },
+    {
+      "episode": "WL-002",
+      "video_file": "WL-002_watermelon-seed.mp4",
+      "caption": "Swallow a watermelon seed and a watermelon grows in your tummy? 🍉😄 Nope, nothing happens — no sunlight or soil inside you, so a seed can't sprout. 🦜🐶\n\nAnimated cartoon. Voices are synthetic (AI text-to-speech).",
+      "publishAt": "2026-11-26T21:00:00Z",
+      "local_time_note": "Wed Nov 26 2026, 3:00 PM America/Chicago"
+    },
+    {
+      "episode": "WL-003",
+      "video_file": "WL-003_five-second-rule.mp4",
+      "caption": "The five-second rule keeps dropped food clean? ⏱️ Sorry — germs jump on the instant it lands. Bacteria stick on contact, and a damp snack picks up even more. 🦜🐶\n\nAnimated cartoon. Voices are synthetic (AI text-to-speech).",
+      "publishAt": "2026-11-27T21:00:00Z",
+      "local_time_note": "Fri Nov 27 2026, 3:00 PM America/Chicago"
+    },
+    {
+      "episode": "WL-004",
+      "video_file": "WL-004_crack-knuckles.mp4",
+      "caption": "Cracking your knuckles gives you arthritis? 😬 Nope — it's just tiny gas bubbles popping. One doctor cracked one hand for 60 years and found no difference. 🦜🐶\n\nAnimated cartoon. Voices are synthetic (AI text-to-speech).",
+      "publishAt": "2026-11-28T21:00:00Z",
+      "local_time_note": "Sat Nov 28 2026, 3:00 PM America/Chicago"
+    },
+    {
+      "episode": "WL-005",
+      "video_file": "WL-005_carrots-night-vision.mp4",
+      "caption": "Eat tons of carrots and you'll see in the dark? 🥕 Sorry — healthy eyes, but no night vision. That idea was a World War Two story made up to hide radar. 🦜🐶\n\nAnimated cartoon. Voices are synthetic (AI text-to-speech).",
+      "publishAt": "2026-11-29T21:00:00Z",
+      "local_time_note": "Sun Nov 29 2026, 3:00 PM America/Chicago"
+    },
+    {
+      "episode": "WL-006",
+      "video_file": "WL-006_red-and-bulls.mp4",
+      "caption": "Does the color red make a bull angry? 🐂 Nope — bulls are red-green colorblind. They charge the moving cape, not the color. 🦜🐶\n\nAnimated cartoon. Voices are synthetic (AI text-to-speech).",
+      "publishAt": "2026-11-30T21:00:00Z",
+      "local_time_note": "Mon Nov 30 2026, 3:00 PM America/Chicago"
+    },
+    {
+      "episode": "WL-007",
+      "video_file": "WL-007_goldfish-memory.mp4",
+      "caption": "Goldfish forget everything in three seconds? 🐠 Nope — they remember for months. They learn feeding times, colors, and can even do little tricks. 🦜🐶\n\nAnimated cartoon. Voices are synthetic (AI text-to-speech).",
+      "publishAt": "2026-12-01T21:00:00Z",
+      "local_time_note": "Tue Dec 01 2026, 3:00 PM America/Chicago"
+    }
+  ]
+}

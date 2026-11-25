@@ -1,0 +1,46 @@
+name: What If Lab — TikTok via Buffer (manual until channel connected)
+
+# No schedule cron yet: TikTok for What If Lab stays OFF until (1) the What If Lab
+# TikTok is connected in Buffer and (2) its channel id is stored as the
+# BUFFER_WHATIFLAB_CHANNEL_ID secret. REQUIRE_CHANNEL_ID=1 makes the script refuse
+# to run without that id, so it can never post What If Lab to the Beyond Obvious
+# TikTok channel. Run in 'check' mode first to read the new channel id.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "check = list Buffer channels / find the What If Lab id (posts nothing) | post = run"
+        required: true
+        default: "check"
+        type: choice
+        options: [check, validate, post]
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: What If Lab TikTok via Buffer
+        env:
+          MODE: ${{ inputs.mode || 'check' }}
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          BUFFER_TIKTOK_CHANNEL_ID: ${{ secrets.BUFFER_WHATIFLAB_CHANNEL_ID }}
+          REQUIRE_CHANNEL_ID: "1"
+          SCHEDULE_FILE: schedule_whatiflab.json
+          STATE_FILE: state_buffer_wl.json
+          CONFIG_FILE: tiktok_auto_wl.json
+          GH_REPO: ${{ github.repository }}
+        run: python buffer_tiktok.py
+      - name: Save state
+        run: |
+          git config user.name "whatiflab-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add state_buffer_wl.json || true
+          git commit -m "update what if lab buffer state" || echo "no changes"
+          git push || echo "nothing to push"

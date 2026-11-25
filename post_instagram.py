@@ -10,17 +10,19 @@ import datetime
 import meta_common as M
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SCHEDULE = os.path.join(HERE, "schedule.json")
-STATE = os.path.join(HERE, "state_ig.json")
-VIDEOS = os.path.join(HERE, "videos")
+# Per-brand overrides (default = Beyond Obvious, so existing runs are unchanged).
+SCHEDULE = os.path.join(HERE, os.environ.get("SCHEDULE_FILE", "schedule.json"))
+STATE = os.path.join(HERE, os.environ.get("STATE_FILE", "state_ig.json"))
+VIDEOS = os.path.join(HERE, os.environ.get("VIDEOS_DIR", "videos"))
 
 # Reach booster appended to every caption (CTA + extra discovery hashtags).
-BOOST = ("\n\nNew science short every day — follow @beyondobvious for your daily "
-         "dose of \"wait, really?\"\n"
-         "#sciencefacts #didyouknow #stem #funfacts #educational #sciencetok #learnsomething")
+# A schedule file may override these with top-level "_boost" / "_first_comment".
+DEFAULT_BOOST = ("\n\nNew science short every day — follow @beyondobvious for your daily "
+                 "dose of \"wait, really?\"\n"
+                 "#sciencefacts #didyouknow #stem #funfacts #educational #sciencetok #learnsomething")
 # Author's first comment, posted right after publish (extra reach; needs
 # instagram_manage_comments — skipped automatically if not granted).
-FIRST_COMMENT = "Which one surprised you? \U0001f447 Follow for a new science short every day!"
+DEFAULT_FIRST_COMMENT = "Which one surprised you? \U0001f447 Follow for a new science short every day!"
 
 
 def publish_reel(ig_id, tok, video_path, caption):
@@ -59,6 +61,8 @@ def main():
                  "Link the IG (Creator) account to the Page and retry.")
     M.log("Instagram account:", ig_id, "(Page:", name + ")")
     sched = M.load_json(SCHEDULE, {"items": []})
+    boost = sched.get("_boost", DEFAULT_BOOST)
+    first_comment = sched.get("_first_comment", DEFAULT_FIRST_COMMENT)
     state = M.load_json(STATE, {"posted": {}})
     today = M.today_chicago()
     due = None
@@ -72,15 +76,15 @@ def main():
     vpath = os.path.join(VIDEOS, due["video_file"])
     if not os.path.exists(vpath):
         sys.exit("MISSING video: %s" % vpath)
-    M.log("publishing IG reel:", due["episode"], due["local_time_note"])
-    mid = publish_reel(ig_id, tok, vpath, due["caption"] + BOOST)
+    M.log("publishing IG reel:", due["episode"], due.get("local_time_note", ""))
+    mid = publish_reel(ig_id, tok, vpath, due["caption"] + boost)
     state["posted"][due["video_file"]] = mid
     M.save_json(STATE, state)
     M.log("  published id=", mid)
     # reach booster: author's first comment (best-effort)
     try:
         M._req("%s/%s/comments" % (M.GRAPH, mid),
-               data={"message": FIRST_COMMENT, "access_token": tok}, method="POST")
+               data={"message": first_comment, "access_token": tok}, method="POST")
         M.log("  first comment posted")
     except Exception as e:
         M.log("  first comment skipped:", e)

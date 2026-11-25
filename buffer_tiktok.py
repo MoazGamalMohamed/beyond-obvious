@@ -28,9 +28,10 @@ import urllib.request
 import urllib.error
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SCHEDULE = os.path.join(HERE, "schedule.json")
-STATE = os.path.join(HERE, "state_buffer.json")
-CONFIG = os.path.join(HERE, "tiktok_auto.json")
+# Per-brand overrides (default = Beyond Obvious, so existing runs are unchanged).
+SCHEDULE = os.path.join(HERE, os.environ.get("SCHEDULE_FILE", "schedule.json"))
+STATE = os.path.join(HERE, os.environ.get("STATE_FILE", "state_buffer.json"))
+CONFIG = os.path.join(HERE, os.environ.get("CONFIG_FILE", "tiktok_auto.json"))
 API = "https://api.buffer.com"
 REPO = os.environ.get("GH_REPO", "MoazGamalMohamed/beyond-obvious")
 # Public, direct, stable video URLs (tried in order if Buffer rejects one).
@@ -40,8 +41,8 @@ BASES = [b for b in [
     "https://cdn.jsdelivr.net/gh/%s@main/videos/" % REPO,
 ] if b]
 
-BOOST = ("\n\nNew science short every day - follow Beyond Obvious."
-         " #fyp #foryou #sciencetok #learnontiktok #stem")
+DEFAULT_BOOST = ("\n\nNew science short every day - follow Beyond Obvious."
+                 " #fyp #foryou #sciencetok #learnontiktok #stem")
 DUE_WINDOW = datetime.timedelta(hours=18)
 MAX_QUEUE = 9          # Buffer Free keeps at most 10 scheduled posts per channel
 
@@ -101,6 +102,12 @@ def tiktok_channel(key):
     cid = os.environ.get("BUFFER_TIKTOK_CHANNEL_ID", "").strip()
     if cid:
         return cid
+    # A second brand MUST pin its own channel id, or we could post it to the first
+    # (Beyond Obvious) TikTok channel. REQUIRE_CHANNEL_ID=1 forbids auto-discovery.
+    if os.environ.get("REQUIRE_CHANNEL_ID", "").strip() in ("1", "true", "yes"):
+        sys.exit("Buffer: BUFFER_TIKTOK_CHANNEL_ID is required for this brand but not set "
+                 "(refusing to auto-pick a channel). Connect this brand's TikTok in Buffer "
+                 "and set its channel id.")
     tt = [c for c in channels(key) if "tiktok" in (c.get("service") or "").lower()]
     if not tt:
         sys.exit("Buffer: no TikTok channel connected yet. Connect TikTok in Buffer first.")
@@ -157,6 +164,7 @@ def main():
     cfg = load(CONFIG, {})
     start = iso(cfg.get("start_publishAt", "2026-12-16T12:00:00Z"))
     sched = load(SCHEDULE, {"items": []})
+    boost = sched.get("_boost", DEFAULT_BOOST)
     state = load(STATE, {"posted": {}})
 
     if mode == "check":
@@ -193,7 +201,7 @@ def main():
     cid = tiktok_channel(key)
     failed = []
     for pub, it, due in todo:
-        text = it["caption"] + BOOST
+        text = it["caption"] + boost
         pid, err = None, None
         for base in BASES:
             url = base + it["video_file"]
