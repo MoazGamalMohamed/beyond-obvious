@@ -1,1 +1,39 @@
-{"posted": {}}
+{
+ "posted": {
+  "WL-001_swallowed-gum.mp4": {
+   "buffer_post_id": "6b064c93615ec212af80916a",
+   "episode": "WL-001",
+   "dueAt": "2026-11-25T21:00:00.000Z"
+  },
+  "WL-002_watermelon-seed.mp4": {
+   "buffer_post_id": "6b064c9440e1d58d12f05f7e",
+   "episode": "WL-002",
+   "dueAt": "2026-11-26T21:00:00.000Z"
+  },
+  "WL-003_five-second-rule.mp4": {
+   "buffer_post_id": "6b064c9440e1d58d12f05faa",
+   "episode": "WL-003",
+   "dueAt": "2026-11-27T21:00:00.000Z"
+  },
+  "WL-004_crack-knuckles.mp4": {
+   "buffer_post_id": "6b064c95615ec212af8091ba",
+   "episode": "WL-004",
+   "dueAt": "2026-11-28T21:00:00.000Z"
+  },
+  "WL-005_carrots-night-vision.mp4": {
+   "buffer_post_id": "6b064c9622dfb7833a73d187",
+   "episode": "WL-005",
+   "dueAt": "2026-11-29T21:00:00.000Z"
+  },
+  "WL-006_red-and-bulls.mp4": {
+   "buffer_post_id": "6b064c965d949f6c2a68f9b5",
+   "episode": "WL-006",
+   "dueAt": "2026-11-30T21:00:00.000Z"
+  },
+  "WL-007_goldfish-memory.mp4": {
+   "buffer_post_id": "6b064c97615ec212af80920d",
+   "episode": "WL-007",
+   "dueAt": "2026-12-01T21:00:00.000Z"
+  }
+ }
+}
