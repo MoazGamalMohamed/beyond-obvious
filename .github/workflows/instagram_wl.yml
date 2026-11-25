@@ -1,0 +1,32 @@
+name: What If Lab — Instagram Reel (daily)
+
+on:
+  schedule:
+    - cron: "0 21 * * *"     # 21:00 UTC daily = 3:00 PM America/Chicago
+  workflow_dispatch: {}       # allow manual run
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Publish today's What If Lab Instagram Reel
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+          META_PAGE_ID: "1484071088120232"
+          SCHEDULE_FILE: schedule_whatiflab.json
+          STATE_FILE: state_ig_wl.json
+        run: python post_instagram.py
+      - name: Save state
+        run: |
+          git config user.name "whatiflab-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add state_ig_wl.json || true
+          git commit -m "update what if lab instagram state" || echo "no changes"
+          git push || echo "nothing to push"

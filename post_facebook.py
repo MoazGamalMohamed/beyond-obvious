@@ -10,15 +10,17 @@ import urllib.request
 import meta_common as M
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SCHEDULE = os.path.join(HERE, "schedule.json")
-STATE = os.path.join(HERE, "state_fb.json")
-VIDEOS = os.path.join(HERE, "videos")
+# Per-brand overrides (default = Beyond Obvious, so existing runs are unchanged).
+SCHEDULE = os.path.join(HERE, os.environ.get("SCHEDULE_FILE", "schedule.json"))
+STATE = os.path.join(HERE, os.environ.get("STATE_FILE", "state_fb.json"))
+VIDEOS = os.path.join(HERE, os.environ.get("VIDEOS_DIR", "videos"))
 
 # Reach booster appended to every NEW reel description (CTA + discovery hashtags).
-# Reels already in state_fb.json keep their original caption.
-BOOST = ("\n\nNew science short every day — follow Beyond Obvious for your daily "
-         "dose of \"wait, really?\"\n"
-         "#sciencefacts #didyouknow #stem #funfacts #educational #reels #learnsomething")
+# Reels already in the state file keep their original caption. A schedule file may
+# override it with a top-level "_boost" string (e.g. a second brand).
+DEFAULT_BOOST = ("\n\nNew science short every day — follow Beyond Obvious for your daily "
+                 "dose of \"wait, really?\"\n"
+                 "#sciencefacts #didyouknow #stem #funfacts #educational #reels #learnsomething")
 
 
 def post_reel(page_id, tok, video_path, description, publish_unix):
@@ -45,6 +47,7 @@ def main():
     page_id, name, tok, _ = M.resolve()
     M.log("Facebook Page:", name, page_id)
     sched = M.load_json(SCHEDULE, {"items": []})
+    boost = sched.get("_boost", DEFAULT_BOOST)
     state = M.load_json(STATE, {"posted": {}})
     now = datetime.datetime.now(datetime.timezone.utc)
     for it in sched["items"]:
@@ -58,8 +61,8 @@ def main():
         vpath = os.path.join(VIDEOS, key)
         if not os.path.exists(vpath):
             M.log("MISSING:", vpath); continue
-        M.log("scheduling FB reel:", it["episode"], it["local_time_note"])
-        vid = post_reel(page_id, tok, vpath, it["caption"] + BOOST, pub)
+        M.log("scheduling FB reel:", it["episode"], it.get("local_time_note", ""))
+        vid = post_reel(page_id, tok, vpath, it["caption"] + boost, pub)
         state["posted"][key] = vid
         M.save_json(STATE, state)
         M.log("  scheduled id=", vid)

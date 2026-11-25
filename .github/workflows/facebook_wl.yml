@@ -1,0 +1,32 @@
+name: What If Lab — Facebook Reels (weekly schedule)
+
+on:
+  schedule:
+    - cron: "47 20 * * 1"   # Mondays ~20:47 UTC (offset from Beyond Obvious)
+  workflow_dispatch: {}      # allow manual run (used to schedule the first batch)
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Schedule What If Lab Facebook Reels
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+          META_PAGE_ID: "1484071088120232"
+          SCHEDULE_FILE: schedule_whatiflab.json
+          STATE_FILE: state_fb_wl.json
+        run: python post_facebook.py
+      - name: Save state
+        run: |
+          git config user.name "whatiflab-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add state_fb_wl.json || true
+          git commit -m "update what if lab facebook state" || echo "no changes"
+          git push || echo "nothing to push"
