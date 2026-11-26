@@ -1,0 +1,63 @@
+name: FB publish one reel (fix stuck)
+
+# Publishes a single reel immediately (to recover a scheduled reel that failed
+# to auto-publish). Optionally deletes the stale scheduled id first. Touches only
+# the one VIDEO_FILE given.
+
+on:
+  workflow_dispatch:
+    inputs:
+      page_id:
+        description: "META_PAGE_ID (which brand Page)"
+        required: true
+        type: string
+      schedule_file:
+        description: "schedule file holding the caption"
+        required: true
+        type: string
+      state_file:
+        description: "FB state file to update"
+        required: true
+        type: string
+      videos_dir:
+        description: "videos dir holding the file"
+        required: true
+        type: string
+      video_file:
+        description: "the one video_file to publish now"
+        required: true
+        type: string
+      delete_video_id:
+        description: "optional stale scheduled reel id to delete first"
+        required: false
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Publish one reel now
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+          META_PAGE_ID: ${{ inputs.page_id }}
+          SCHEDULE_FILE: ${{ inputs.schedule_file }}
+          STATE_FILE: ${{ inputs.state_file }}
+          VIDEOS_DIR: ${{ inputs.videos_dir }}
+          VIDEO_FILE: ${{ inputs.video_file }}
+          DELETE_VIDEO_ID: ${{ inputs.delete_video_id }}
+        run: python fb_publish_one.py
+      - name: Save state
+        run: |
+          git config user.name "studio-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add ${{ inputs.state_file }} || true
+          git commit -m "publish one reel (fix stuck): ${{ inputs.video_file }}" || echo "no changes"
+          git push || echo "nothing to push"
