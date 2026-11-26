@@ -22,16 +22,27 @@ def main():
             r = M.get(str(vid), tok=tok,
                       fields="id,published,scheduled_publish_time,permalink_url,created_time")
             sp = r.get("scheduled_publish_time")
-            spix = ""
+            ts = None
+            spix = "-"
             if sp:
-                spix = datetime.datetime.utcfromtimestamp(int(sp)).strftime("%Y-%m-%dT%H:%M:%SZ")
+                try:
+                    ts = int(sp)
+                except (ValueError, TypeError):
+                    try:
+                        ts = int(datetime.datetime.strptime(
+                            str(sp), "%Y-%m-%dT%H:%M:%S%z").timestamp())
+                    except Exception:
+                        ts = None
+                spix = (datetime.datetime.utcfromtimestamp(ts).strftime("%Y-%m-%dT%H:%M:%SZ")
+                        if ts else str(sp))
             pub = r.get("published")
-            if pub is True and not (sp and int(sp) > now.timestamp()):
+            future = bool(ts and ts > now.timestamp())
+            if pub is True and not future:
                 live += 1
             else:
                 sched += 1
-            print("%-34s published=%s scheduled=%s url=%s"
-                  % (vf, pub, spix or "-", r.get("permalink_url") or "-"))
+            print("%-34s published=%s sched=%s url=%s"
+                  % (vf, pub, spix, r.get("permalink_url") or "-"))
         except Exception as e:
             print("%-34s ERROR %s" % (vf, e))
     M.log("LIVE now:", live, "| still scheduled:", sched)
