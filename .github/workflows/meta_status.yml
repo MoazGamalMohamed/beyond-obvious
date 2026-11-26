@@ -1,0 +1,31 @@
+name: Meta reel status
+
+# Read-only: reports which FB reels in a state file are LIVE vs still SCHEDULED.
+# Posts nothing.
+
+on:
+  workflow_dispatch:
+    inputs:
+      page_id:
+        description: "META_PAGE_ID (which brand Page)"
+        required: true
+        type: string
+      state_file:
+        description: "FB state file, e.g. state_fb_wl.json"
+        required: true
+        type: string
+
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Reel status
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+          META_PAGE_ID: ${{ inputs.page_id }}
+          STATE_FILE: ${{ inputs.state_file }}
+        run: python meta_status.py
