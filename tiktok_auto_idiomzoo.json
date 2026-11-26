@@ -1,0 +1,4 @@
+{
+  "_note": "Idiom Zoo TikTok (Buffer) auto-post config. start_publishAt gates the earliest item that may post; kept in the past for the launch so the first video goes out now.",
+  "start_publishAt": "2026-11-01T00:00:00Z"
+}

@@ -1,0 +1,46 @@
+name: TikTok via Buffer - Idiom Zoo
+
+# Idiom Zoo ONLY. Pins the Idiom Zoo Buffer TikTok channel and reads the
+# Idiom Zoo schedule/state/config. REQUIRE_CHANNEL_ID=1 forbids auto-picking a
+# channel, so this can never post to the Beyond Obvious or What If Lab TikTok.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "check = verify (posts nothing) | post = hand today's video to Buffer"
+        required: true
+        default: "check"
+        type: choice
+        options: [check, post]
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: TikTok via Buffer (Idiom Zoo)
+        env:
+          MODE: ${{ inputs.mode }}
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          BUFFER_TIKTOK_CHANNEL_ID: "6b0780a98541f09ecba75af2"
+          REQUIRE_CHANNEL_ID: "1"
+          SCHEDULE_FILE: "schedule_idiomzoo_launch.json"
+          STATE_FILE: "state_buffer_idiomzoo.json"
+          CONFIG_FILE: "tiktok_auto_idiomzoo.json"
+          VIDEO_BASE_URL: "https://raw.githubusercontent.com/MoazGamalMohamed/beyond-obvious/main/videos_idiomzoo/"
+          GH_REPO: ${{ github.repository }}
+        run: python buffer_tiktok.py
+      - name: Save state
+        run: |
+          git config user.name "idiomzoo-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add state_buffer_idiomzoo.json || true
+          git commit -m "idiomzoo buffer tiktok state" || echo "no changes"
+          git push || echo "nothing to push"
