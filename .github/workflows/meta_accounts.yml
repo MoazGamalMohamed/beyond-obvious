@@ -1,0 +1,20 @@
+name: Meta accounts list
+
+# Read-only: lists every Facebook Page the token can see and each linked
+# Instagram handle (all brands). Posts nothing. No META_PAGE_ID pin on purpose.
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  accounts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: List Pages + linked IG accounts
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+        run: python meta_accounts.py
