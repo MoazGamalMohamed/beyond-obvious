@@ -1,0 +1,21 @@
+name: Meta links - Idiom Zoo
+
+# Read-only: prints the public FB + IG permalinks for the Idiom Zoo posts
+# recorded in the state files. Posts nothing.
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Print Idiom Zoo FB + IG permalinks
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+          META_PAGE_ID: "1494526067076336"
+        run: python meta_links.py

@@ -25,6 +25,7 @@ jobs:
           SCHEDULE_FILE: "schedule_idiomzoo_meta.json"
           STATE_FILE: "state_idiomzoo_fb.json"
           VIDEOS_DIR: "videos_idiomzoo"
+          FB_PUBLISH_NOW: "1"
         run: python post_facebook.py
       - name: Save state
         run: |
