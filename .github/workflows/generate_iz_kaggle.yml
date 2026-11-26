@@ -26,7 +26,9 @@ jobs:
         run: pip install --quiet kaggle
       - name: Generate songs on Kaggle GPU
         env:
-          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          # Username is not sensitive, so accept it as a Secret or a Variable.
+          # The key must be a Secret (so Actions masks it in logs).
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME || vars.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: python gen_kaggle_iz.py
