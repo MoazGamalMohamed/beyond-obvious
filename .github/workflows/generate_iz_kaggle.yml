@@ -24,6 +24,17 @@ jobs:
           python-version: "3.11"
       - name: Install Kaggle CLI
         run: pip install --quiet kaggle
+      - name: Check Kaggle auth secrets are present (prints only true/false, never values)
+        env:
+          HAS_TOKEN: ${{ secrets.KAGGLE_API_TOKEN != '' }}
+          HAS_USER_SECRET: ${{ secrets.KAGGLE_USERNAME != '' }}
+          HAS_USER_VAR: ${{ vars.KAGGLE_USERNAME != '' }}
+          HAS_KEY: ${{ secrets.KAGGLE_KEY != '' }}
+        run: |
+          echo "KAGGLE_API_TOKEN present as repo SECRET  : $HAS_TOKEN"
+          echo "KAGGLE_USERNAME  present as repo SECRET  : $HAS_USER_SECRET"
+          echo "KAGGLE_USERNAME  present as repo VARIABLE: $HAS_USER_VAR"
+          echo "KAGGLE_KEY       present as repo SECRET  : $HAS_KEY"
       - name: Generate songs on Kaggle GPU
         env:
           # NEW Kaggle auth: single access token (KGAT_...). Keep as a Secret.
