@@ -40,18 +40,41 @@ def log(*a):
     print(*a, flush=True)
 
 
-def write_kaggle_json():
-    user = os.environ.get("KAGGLE_USERNAME", "").strip()
-    key = os.environ.get("KAGGLE_KEY", "").strip()
-    if not user or not key:
-        log("ERROR: KAGGLE_USERNAME / KAGGLE_KEY not set (add them as repo secrets).")
-        sys.exit(78)  # neutral-ish; workflow treats as skip
+def setup_auth():
+    """Authenticate the Kaggle CLI and return the account username.
+
+    The username is required to name the kernel <username>/<slug>. Auth supports
+    both Kaggle credential styles:
+      - NEW: a single access token in KAGGLE_API_TOKEN (format KGAT_...), written
+        to ~/.kaggle/access_token (the client reads it automatically).
+      - LEGACY: KAGGLE_USERNAME + KAGGLE_KEY, written to ~/.kaggle/kaggle.json.
+    """
     d = os.path.expanduser("~/.kaggle")
     os.makedirs(d, exist_ok=True)
-    p = os.path.join(d, "kaggle.json")
-    with open(p, "w") as f:
-        json.dump({"username": user, "key": key}, f)
-    os.chmod(p, 0o600)
+    user = os.environ.get("KAGGLE_USERNAME", "").strip()
+    token = os.environ.get("KAGGLE_API_TOKEN", "").strip()
+    key = os.environ.get("KAGGLE_KEY", "").strip()
+
+    if token:
+        p = os.path.join(d, "access_token")
+        with open(p, "w") as f:
+            f.write(token)
+        os.chmod(p, 0o600)
+        os.environ["KAGGLE_API_TOKEN"] = token
+        log("auth: KAGGLE_API_TOKEN")
+    elif user and key:
+        p = os.path.join(d, "kaggle.json")
+        with open(p, "w") as f:
+            json.dump({"username": user, "key": key}, f)
+        os.chmod(p, 0o600)
+        log("auth: KAGGLE_USERNAME + KAGGLE_KEY (legacy)")
+    else:
+        log("ERROR: no Kaggle auth. Add KAGGLE_API_TOKEN (and KAGGLE_USERNAME) as repo secrets.")
+        sys.exit(78)
+
+    if not user:
+        log("ERROR: KAGGLE_USERNAME not set - needed to name the kernel under your account.")
+        sys.exit(78)
     return user
 
 
@@ -97,7 +120,7 @@ def main():
     if not eps:
         log("Nothing pending - all songs already in songs_idiomzoo/.")
         return 0
-    user = write_kaggle_json()
+    user = setup_auth()
     log("pending:", [e["slug"] for e in eps])
     build_push_dir(user, eps)
 

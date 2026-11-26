@@ -27,11 +27,17 @@ Both call the identical generation code, so the output sounds the same.
 
 ## One-time setup (repo secrets)
 
-Add under **Settings → Secrets and variables → Actions**:
+Add under **Settings → Secrets and variables → Actions → Secrets**:
 
-- `KAGGLE_USERNAME` — from `kaggle.json`
-- `KAGGLE_KEY` — from `kaggle.json` (create at Kaggle → Settings → API)
-- `HF_TOKEN` — *optional*, only if the model download needs auth
+- `KAGGLE_API_TOKEN` — the single access token (`KGAT_...`) from
+  Kaggle → Settings → API → **Generate New Token**. This is the auth.
+- `KAGGLE_USERNAME` — your Kaggle username *slug* (from your profile URL
+  `kaggle.com/<slug>`, or Kaggle → Settings → Account). Needed to name the kernel
+  under your account. Not sensitive — may live under the Variables tab instead.
+- `HF_TOKEN` — *optional*, only if the model download needs auth.
+
+Legacy fallback: if an old-style `kaggle.json` (username + key) is used instead,
+set `KAGGLE_USERNAME` + `KAGGLE_KEY` and omit `KAGGLE_API_TOKEN`.
 
 The Kaggle account must be **phone-verified** (Kaggle → Settings) to use GPU +
 internet in kernels.
