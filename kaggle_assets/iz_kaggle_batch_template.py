@@ -45,7 +45,10 @@ def setup():
         sh(f"git clone --depth 1 {SPACE_REPO} {SPACE}")
     req_in = os.path.join(SPACE, "requirements.txt")
     req_out = os.path.join(WORK, "reqs_filtered.txt")
-    skip = ("torch==", "torchaudio==", "torchvision==", "gradio", "spaces", "uvicorn", "fastapi", "openai")
+    # Keep Kaggle's CUDA-matched torch stack; drop only the Gradio-server/app-only
+    # deps. `spaces` is kept (tiny, and some handler builds import it; it no-ops off
+    # Hugging Face ZeroGPU infra, so direct generate_music() runs on Kaggle's GPU).
+    skip = ("torch==", "torchaudio==", "torchvision==", "gradio", "uvicorn", "fastapi", "openai")
     with open(req_in) as f, open(req_out, "w") as g:
         for line in f:
             s = line.strip()
