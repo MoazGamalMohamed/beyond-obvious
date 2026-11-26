@@ -23,7 +23,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install Kaggle CLI
-        run: pip install --quiet kaggle
+        run: pip install --quiet kaggle six
       - name: Check Kaggle auth secrets are present (prints only true/false, never values)
         env:
           HAS_TOKEN: ${{ secrets.KAGGLE_API_TOKEN != '' }}
