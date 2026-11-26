@@ -1,2 +1,6 @@
 __pycache__/
 *.pyc
+
+# Kaggle generation runtime temp dirs
+_kaggle_push/
+_kaggle_out/

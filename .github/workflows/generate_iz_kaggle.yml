@@ -1,0 +1,39 @@
+name: Generate songs on Kaggle GPU - Idiom Zoo
+
+# Idiom Zoo ONLY. Generates the sung tracks for IZ-003..007 on Kaggle's FREE GPU
+# by running the ACE-Step v1.5 XL-Turbo code of the victor/ace-step-jam Space
+# (the same model behind Break the Ice / IZ-001 / IZ-002). No ZeroGPU quota is
+# used. Output WAVs are committed to songs_idiomzoo/, which the render container
+# then aligns + masters + renders. The ZeroGPU path (gen_all.py) stays as fallback.
+#
+# Requires repo secrets: KAGGLE_USERNAME, KAGGLE_KEY (HF_TOKEN optional).
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  gen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Kaggle CLI
+        run: pip install --quiet kaggle
+      - name: Generate songs on Kaggle GPU
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: python gen_kaggle_iz.py
+      - name: Commit generated songs
+        run: |
+          git config user.name "idiomzoo-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add songs_idiomzoo/*.wav 2>/dev/null || true
+          git commit -m "idiomzoo: Kaggle-generated songs" || echo "no changes"
+          git push || echo "nothing to push"
