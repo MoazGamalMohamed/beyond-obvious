@@ -14,6 +14,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SCHEDULE = os.path.join(HERE, os.environ.get("SCHEDULE_FILE", "schedule.json"))
 STATE = os.path.join(HERE, os.environ.get("STATE_FILE", "state_ig.json"))
 VIDEOS = os.path.join(HERE, os.environ.get("VIDEOS_DIR", "videos"))
+# Optional public base URL. When set, Instagram fetches the video from
+# VIDEO_BASE_URL/<video_file> (reliable) instead of a resumable byte upload.
+VIDEO_BASE_URL = os.environ.get("VIDEO_BASE_URL", "").rstrip("/")
 
 # Reach booster appended to every caption (CTA + extra discovery hashtags).
 # A schedule file may override these with top-level "_boost" / "_first_comment".
@@ -25,19 +28,28 @@ DEFAULT_BOOST = ("\n\nNew science short every day — follow @beyondobvious for 
 DEFAULT_FIRST_COMMENT = "Which one surprised you? \U0001f447 Follow for a new science short every day!"
 
 
-def publish_reel(ig_id, tok, video_path, caption):
-    # 1) create a resumable Reels container
-    j = M._req("%s/%s/media" % (M.GRAPH, ig_id),
-               data={"media_type": "REELS", "upload_type": "resumable",
-                     "caption": caption, "access_token": tok}, method="POST")
-    cid = j["id"]
-    # 2) upload the local file to the IG upload endpoint
-    size = os.path.getsize(video_path)
-    with open(video_path, "rb") as f:
-        M._req("%s/%s" % (M.RUPLOAD_IG, cid),
-               headers={"Authorization": "OAuth " + tok, "offset": "0",
-                        "file_size": str(size)}, raw=f.read(), method="POST")
-    # 3) poll until the container is FINISHED (<=5 min)
+def publish_reel(ig_id, tok, video_path, caption, video_url=None):
+    # 1) create the Reels container
+    if video_url:
+        # Preferred: Instagram fetches the file from a public URL (served as
+        # video/mp4). Far more reliable than the resumable byte upload, which
+        # returns ProcessingFailedError for some files.
+        j = M._req("%s/%s/media" % (M.GRAPH, ig_id),
+                   data={"media_type": "REELS", "video_url": video_url,
+                         "caption": caption, "access_token": tok}, method="POST")
+        cid = j["id"]
+    else:
+        # Fallback: resumable binary upload of the local file.
+        j = M._req("%s/%s/media" % (M.GRAPH, ig_id),
+                   data={"media_type": "REELS", "upload_type": "resumable",
+                         "caption": caption, "access_token": tok}, method="POST")
+        cid = j["id"]
+        size = os.path.getsize(video_path)
+        with open(video_path, "rb") as f:
+            M._req("%s/%s" % (M.RUPLOAD_IG, cid),
+                   headers={"Authorization": "OAuth " + tok, "offset": "0",
+                            "file_size": str(size)}, raw=f.read(), method="POST")
+    # 2) poll until the container is FINISHED (<=5 min)
     for _ in range(30):
         st = M.get("%s" % cid, tok=tok, fields="status_code")
         code = st.get("status_code")
@@ -76,8 +88,10 @@ def main():
     vpath = os.path.join(VIDEOS, due["video_file"])
     if not os.path.exists(vpath):
         sys.exit("MISSING video: %s" % vpath)
-    M.log("publishing IG reel:", due["episode"], due.get("local_time_note", ""))
-    mid = publish_reel(ig_id, tok, vpath, due["caption"] + boost)
+    vurl = (VIDEO_BASE_URL + "/" + due["video_file"]) if VIDEO_BASE_URL else None
+    M.log("publishing IG reel:", due["episode"], due.get("local_time_note", ""),
+          "(via hosted URL)" if vurl else "(via upload)")
+    mid = publish_reel(ig_id, tok, vpath, due["caption"] + boost, video_url=vurl)
     state["posted"][due["video_file"]] = mid
     M.save_json(STATE, state)
     M.log("  published id=", mid)

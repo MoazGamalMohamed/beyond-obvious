@@ -25,6 +25,7 @@ jobs:
           SCHEDULE_FILE: "schedule_idiomzoo_meta.json"
           STATE_FILE: "state_idiomzoo_ig.json"
           VIDEOS_DIR: "videos_idiomzoo"
+          VIDEO_BASE_URL: "https://moazgamalmohamed.github.io/beyond-obvious"
         run: python post_instagram.py
       - name: Save state
         run: |
