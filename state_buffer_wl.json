@@ -34,6 +34,26 @@
    "buffer_post_id": "6b064c97615ec212af80920d",
    "episode": "WL-007",
    "dueAt": "2026-12-01T21:00:00.000Z"
+  },
+  "WL-008_brain-ten-percent.mp4": {
+   "buffer_post_id": "6b07a00d07071a60674bd096",
+   "episode": "WL-008",
+   "dueAt": "2026-12-02T21:00:00.000Z"
+  },
+  "WL-009_shaving-thicker-hair.mp4": {
+   "buffer_post_id": "6b07a00eb96dd8d35182b77b",
+   "episode": "WL-009",
+   "dueAt": "2026-12-03T21:00:00.000Z"
+  },
+  "WL-010_heat-through-head.mp4": {
+   "buffer_post_id": "6b07a00eb8e2338b8584a791",
+   "episode": "WL-010",
+   "dueAt": "2026-12-04T21:00:00.000Z"
+  },
+  "WL-011_sugar-hyper.mp4": {
+   "buffer_post_id": "6b07a00fa791bea1b24a8437",
+   "episode": "WL-011",
+   "dueAt": "2026-12-05T21:00:00.000Z"
   }
  }
 }
