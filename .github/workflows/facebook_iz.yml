@@ -25,7 +25,10 @@ jobs:
           SCHEDULE_FILE: "schedule_idiomzoo_meta.json"
           STATE_FILE: "state_idiomzoo_fb.json"
           VIDEOS_DIR: "videos_idiomzoo"
-          FB_PUBLISH_NOW: "1"
+          # Schedule each reel natively at its publishAt (one dispatch queues the
+          # whole week, one idiom per day). Launch-day immediate publish is done
+          # with fb_publish_one.yml, not here.
+          FB_PUBLISH_NOW: "0"
         run: python post_facebook.py
       - name: Save state
         run: |
