@@ -77,12 +77,31 @@ def main():
     first_comment = sched.get("_first_comment", DEFAULT_FIRST_COMMENT)
     state = M.load_json(STATE, {"posted": {}})
     today = M.today_chicago()
+    # CATCHUP=1: self-heal a slot whose run failed by posting the OLDEST not-yet-
+    # posted item whose local date is today or within the last MAX_CATCHUP_DAYS
+    # days (so a wiped state file can't dump very old content). Default off, so
+    # Beyond Obvious / Idiom Zoo keep their exact today-only behavior.
+    catchup = os.environ.get("CATCHUP", "") == "1"
+    max_back = int(os.environ.get("MAX_CATCHUP_DAYS", "7"))
     due = None
-    for it in sched["items"]:
-        d = datetime.datetime.strptime(it["publishAt"], "%Y-%m-%dT%H:%M:%SZ")
-        local_date = (d - datetime.timedelta(hours=6)).date()  # UTC->Chicago
-        if local_date == today and it["video_file"] not in state["posted"]:
-            due = it; break
+    if catchup:
+        cands = []
+        for it in sched["items"]:
+            d = datetime.datetime.strptime(it["publishAt"], "%Y-%m-%dT%H:%M:%SZ")
+            local_date = (d - datetime.timedelta(hours=6)).date()  # UTC->Chicago
+            if it["video_file"] in state["posted"]:
+                continue
+            if (today - datetime.timedelta(days=max_back)) <= local_date <= today:
+                cands.append((local_date, it))
+        if cands:
+            cands.sort(key=lambda x: x[0])
+            due = cands[0][1]
+    else:
+        for it in sched["items"]:
+            d = datetime.datetime.strptime(it["publishAt"], "%Y-%m-%dT%H:%M:%SZ")
+            local_date = (d - datetime.timedelta(hours=6)).date()  # UTC->Chicago
+            if local_date == today and it["video_file"] not in state["posted"]:
+                due = it; break
     if not due:
         M.log("Nothing due today (", today, ") or already posted."); return
     vpath = os.path.join(VIDEOS, due["video_file"])
