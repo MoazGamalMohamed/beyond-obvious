@@ -1,252 +1,252 @@
 {
- "timezone": "America/Chicago",
- "target_local_time": "18:00",
- "note": "Weeks 1-5 auto-posting (through Dec 31). IG posts daily; FB schedules weekly; TikTok goes through Buffer (Free plan holds 10 ahead, topped up daily).",
- "items": [
-  {
-   "episode": "BO-001",
-   "video_file": "02_Thu-Nov26_BO-001.mp4",
-   "caption": "Why don't birds get fried on power lines? \ud83d\udc26\u26a1\n\nCurrent only flows when there's a voltage difference. A bird's two feet grip the same wire at almost the same voltage, so almost nothing flows through it. Touch two wires at once, though...\n\n#physics #electricity #science #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-11-27T00:00:00Z",
-   "local_time_note": "Thu Nov 26 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-003",
-   "video_file": "03_Fri-Nov27_BO-003.mp4",
-   "caption": "Why are airplane windows round? \u2708\ufe0f\n\nEarly jets had square windows \u2014 and the sharp corners concentrated stress until they cracked in flight. Rounded corners spread the stress out. Engineers learned this the hard way with the de Havilland Comet.\n\n#engineering #aviation #planes #learnontiktok #edutainment",
-   "publishAt": "2026-11-28T00:00:00Z",
-   "local_time_note": "Fri Nov 27 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-004",
-   "video_file": "04_Sat-Nov28_BO-004.mp4",
-   "caption": "Your phone's GPS needs Einstein. \ud83d\udef0\ufe0f\n\nClocks on GPS satellites tick faster than clocks on the ground \u2014 gravity and speed combined add about 38 microseconds a day. Ignore relativity and your location drifts roughly 10 km every day.\n\n#physics #space #gps #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-11-29T00:00:00Z",
-   "local_time_note": "Sat Nov 28 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-006",
-   "video_file": "05_Sun-Nov29_BO-006.mp4",
-   "caption": "The Sahara used to be green \u2014 with lakes, grass, and hippos. \ud83c\udf3f\n\nAbout 6,000 years ago a slow wobble in Earth's orbit pulled the monsoon rains north and the desert bloomed. The wobble will swing back... in a few thousand years.\n\n#geography #earth #sahara #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-11-30T00:00:00Z",
-   "local_time_note": "Sun Nov 29 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-005",
-   "video_file": "06_Mon-Nov30_BO-005.mp4",
-   "caption": "Steel sinks \u2014 so how do steel ships float? \ud83d\udea2\n\nA ship is mostly air. Its hull pushes aside more water-weight than the whole ship weighs, so it floats. Archimedes figured this out over 2,000 years ago.\n\n#physics #science #ships #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-01T00:00:00Z",
-   "local_time_note": "Mon Nov 30 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-007",
-   "video_file": "07_Tue-Dec01_BO-007.mp4",
-   "caption": "Why did this bridge start dancing? \ud83c\udf09\n\nWhen London's Millennium Bridge opened, the crowd's footsteps synced with its tiny sway and amplified it into a wobble. They closed it after two days. It's called synchronous lateral excitation.\n\n#engineering #physics #bridges #learnontiktok #edutainment",
-   "publishAt": "2026-12-02T00:00:00Z",
-   "local_time_note": "Tue Dec 01 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-010",
-   "video_file": "08_Wed-Dec02_BO-010.mp4",
-   "caption": "You see lightning, then hear thunder seconds later. Why? \u26a1\n\nLight is basically instant; sound only travels ~343 m/s. Count the seconds from flash to bang and divide by 3 \u2014 that's how many kilometres away the strike is.\n\n#physics #weather #lightning #science #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-03T00:00:00Z",
-   "local_time_note": "Wed Dec 02 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-008",
-   "video_file": "09_Thu-Dec03_BO-008.mp4",
-   "caption": "Spaceships don't burn up from friction. \ud83d\ude80\n\nAt ~7.8 km/s a returning capsule slams into the air faster than it can move aside, compressing it into a shock layer thousands of degrees hot. The heat comes from squeezing the air, not rubbing it.\n\n#space #physics #reentry #spacecraft #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-04T00:00:00Z",
-   "local_time_note": "Thu Dec 03 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-009",
-   "video_file": "10_Fri-Dec04_BO-009.mp4",
-   "caption": "There's a 660-tonne ball hanging inside this skyscraper. \ud83c\udfe2\n\nIt's a tuned mass damper. The wind sways the tower; the giant sphere swings the opposite way, tuned to the building's own rhythm, and cancels the wobble.\n\n#engineering #architecture #skyscraper #physics #learnontiktok #edutainment",
-   "publishAt": "2026-12-05T00:00:00Z",
-   "local_time_note": "Fri Dec 04 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-011",
-   "video_file": "11_Sat-Dec05_BO-011.mp4",
-   "caption": "Ice should sink \u2014 but it floats. \u2744\ufe0f\n\nWater expands when it freezes into an open lattice, so ice is only ~92% as dense as water (just the tip of the iceberg shows). That floating cap insulates lakes so fish survive winter.\n\n#chemistry #physics #water #ice #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-06T00:00:00Z",
-   "local_time_note": "Sat Dec 05 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-014",
-   "video_file": "12_Sun-Dec06_BO-014.mp4",
-   "caption": "The loneliest place on Earth \u2014 where the nearest people are in space. \ud83d\udef0\ufe0f\n\nAt Point Nemo the closest land is ~2,688 km away. But the ISS orbits just ~400 km up, so when it passes over, the nearest humans are the astronauts overhead. It's also the 'spacecraft cemetery.'\n\n#geography #ocean #space #iss #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-07T00:00:00Z",
-   "local_time_note": "Sun Dec 06 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-012",
-   "video_file": "13_Mon-Dec07_BO-012.mp4",
-   "caption": "Why does the Moon always show us the same face? \ud83c\udf15\n\nIt's tidally locked \u2014 it spins exactly once for every lap around Earth (~27.3 days), so one side stays pointed at us. And the 'dark side' isn't dark; it gets the same sunlight. It's just the far side.\n\n#space #astronomy #moon #science #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-08T00:00:00Z",
-   "local_time_note": "Mon Dec 07 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-013",
-   "video_file": "14_Tue-Dec08_BO-013.mp4",
-   "caption": "You can't fold paper to the Moon \u2014 but the math says 42. \ud83d\udcc4\n\nEach fold doubles the thickness. 0.1 mm doubled 42 times shoots past the Moon. In real life you jam up around 7 folds: the stack becomes thicker than it is wide. That's exponential growth.\n\n#math #science #exponential #paper #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-09T00:00:00Z",
-   "local_time_note": "Tue Dec 08 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-015",
-   "video_file": "15_Wed-Dec09_BO-015.mp4",
-   "caption": "Why is the sky blue? \ud83c\udf24\ufe0f\n\nSunlight is every colour mixed. Air scatters short blue waves far more than red (by one over wavelength to the fourth), so blue fills the sky from every direction. At sunset the light crosses more air, the blue scatters away, and you're left with red.\n\n#physics #optics #science #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-10T00:00:00Z",
-   "local_time_note": "Wed Dec 09 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-020",
-   "video_file": "16_Thu-Dec10_BO-020.mp4",
-   "caption": "Do sinks drain backwards in Australia? \ud83c\udf00\n\nThat's a myth \u2014 the Coriolis effect is far too weak to steer a sink; the drain's shape wins. But over something huge like a hurricane it's decisive: storms spin counter-clockwise up north, clockwise down south, and can't even form right at the equator where it drops to zero.\n\n#physics #geography #weather #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-11T00:00:00Z",
-   "local_time_note": "Thu Dec 10 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-016",
-   "video_file": "17_Fri-Dec11_BO-016.mp4",
-   "caption": "How do noise-cancelling headphones erase sound? \ud83c\udfa7\n\nNot thick foam. A tiny mic samples the incoming noise, and the speaker plays that exact wave flipped upside down. Crest meets trough and they add to nothing \u2014 destructive interference.\n\n#physics #sound #waves #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-12T00:00:00Z",
-   "local_time_note": "Fri Dec 11 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-018",
-   "video_file": "18_Sat-Dec12_BO-018.mp4",
-   "caption": "Why are golf balls covered in dimples? \u26f3\n\nThey're aerodynamic. A smooth ball drags a wide wake; dimples trip the air into a thin turbulent layer that clings on, shrinking the wake and roughly halving the drag. It's called the drag crisis \u2014 and it makes the ball fly about twice as far.\n\n#physics #aerodynamics #golf #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-13T00:00:00Z",
-   "local_time_note": "Sat Dec 12 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-019",
-   "video_file": "19_Sun-Dec13_BO-019.mp4",
-   "caption": "Why doesn't the Leaning Tower of Pisa fall over? \ud83d\uddfc\n\nNo glue \u2014 just balance. A tower tips only when its centre of mass passes outside its base. Pisa's weight sits only about 2 metres off-centre, and its base is nearly 8 metres wide. It could lean to about 15 degrees before it would ever topple.\n\n#physics #engineering #architecture #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-14T00:00:00Z",
-   "local_time_note": "Sun Dec 13 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-017",
-   "video_file": "20_Mon-Dec14_BO-017.mp4",
-   "caption": "Why do we add a leap day? \ud83d\udcc5\n\nIt's not for February \u2014 it's Earth's orbit. A year is about 365.2422 days, not a round number, so that spare quarter-day piles up. We add a day every four years, then skip three leaps every 400 years. That's why 2000 counted but 1900 didn't, and it keeps the calendar within a day of the seasons for millennia.\n\n#astronomy #calendar #science #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-15T00:00:00Z",
-   "local_time_note": "Mon Dec 14 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-021",
-   "video_file": "21_Tue-Dec15_BO-021.mp4",
-   "caption": "Mountaintops are closer to the Sun, so why are they freezing? \ud83c\udfd4\ufe0f\n\nBecause a few kilometres is nothing next to 150 million km to the Sun. The real reason is pressure: air thins and expands as it rises, and expanding air cools \u2014 about 6.5 \u00b0C for every kilometre you climb.\n\n#physics #weather #atmosphere #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-16T00:00:00Z",
-   "local_time_note": "Tue Dec 15 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-023",
-   "video_file": "22_Wed-Dec16_BO-023.mp4",
-   "caption": "Astronauts float because there's no gravity in space... right? \ud83d\ude80\n\nWrong - gravity up there is still about 90% as strong as down here. They float because they're falling the whole time, while moving sideways at nearly 8 km every second. The ground curves away as fast as they fall, so they keep missing the Earth. That endless fall is an orbit.\n\n#space #physics #astronauts #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-17T00:00:00Z",
-   "local_time_note": "Wed Dec 16 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-024",
-   "video_file": "23_Thu-Dec17_BO-024.mp4",
-   "caption": "Why does metal feel colder than wood? \ud83e\udd76\n\nIt isn't colder - both are at room temperature. Your skin doesn't feel temperature, it feels heat leaving. Metal pulls heat out of your hand fast, so your skin drops to about 21 \u00b0C. Wood barely takes any, so it stays near 30 \u00b0C. Same reason tiles feel colder than a rug.\n\n#physics #heat #science #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-18T00:00:00Z",
-   "local_time_note": "Thu Dec 17 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-027",
-   "video_file": "24_Fri-Dec18_BO-027.mp4",
-   "caption": "Why can't you ever reach the end of a rainbow? \ud83c\udf08\n\nBecause it isn't a thing in a place. Sunlight enters each raindrop, bounces off the back and comes out bent at about 42 degrees. The rainbow is every drop sitting at that angle from your eye - move and it moves with you. It's really a full circle; the ground just hides the bottom half.\n\n#physics #optics #light #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-19T00:00:00Z",
-   "local_time_note": "Fri Dec 18 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-025",
-   "video_file": "25_Sat-Dec19_BO-025.mp4",
-   "caption": "If you can see into a microwave, why can't the microwaves get out? \ud83c\udf7f\n\nThe glass hides a metal mesh with holes about a millimetre wide. A microwave is a wave 12 cm long - far too big to squeeze through, so it bounces back. Light waves are thousands of times smaller than the holes, so they sail right out. You get the view, the popcorn gets the heat.\n\n#physics #waves #technology #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-20T00:00:00Z",
-   "local_time_note": "Sat Dec 19 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-022",
-   "video_file": "26_Sun-Dec20_BO-022.mp4",
-   "caption": "Why do stars twinkle but planets don't? \u2728\n\nThe star isn't flickering - our air is. Moving pockets of warm and cold air bend the light back and forth in its last split second. A star is a single point, so the whole thing wobbles. A planet is a tiny disc, so its wobbles average out. From space, stars don't twinkle at all.\n\n#astronomy #space #stars #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-21T00:00:00Z",
-   "local_time_note": "Sun Dec 20 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-026",
-   "video_file": "27_Mon-Dec21_BO-026.mp4",
-   "caption": "Rivers are fresh, so why is the sea salty? \ud83c\udf0a\n\nThe salt comes from the rivers. Rain slowly dissolves rock, and rivers carry a tiny pinch of those minerals to the sea. Then the Sun evaporates the water, but the salt stays behind. Repeat for a few billion years and every litre of seawater holds about 35 grams of salt.\n\n#earthscience #ocean #geography #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-22T00:00:00Z",
-   "local_time_note": "Mon Dec 21 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-028",
-   "video_file": "28_Tue-Dec22_BO-028.mp4",
-   "caption": "One Moon... so why two high tides a day? \ud83c\udf15\n\nThe Moon pulls hardest on the near side of the Earth and weakest on the far side. That difference stretches the ocean into two bulges - one facing the Moon, one facing away. The Earth spins under both, so high tide comes about every 12 and a half hours.\n\n#physics #ocean #moon #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-23T00:00:00Z",
-   "local_time_note": "Tue Dec 22 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-029",
-   "video_file": "29_Wed-Dec23_BO-029.mp4",
-   "caption": "Winter = Earth far from the Sun? \u2744\ufe0f Nope.\n\nWe're actually CLOSEST to the Sun in early January. Distance changes the sunlight by only ~7%. Winter is cold because Earth is tilted 23.4 degrees: your half leans away, the Sun sits low, and the days are short.\n\nSubscribe to Beyond Obvious for one every day. Which one surprised you? \ud83d\udc47\n\n#astronomy #seasons #science #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-24T00:00:00Z",
-   "local_time_note": "Wed Dec 23 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-030",
-   "video_file": "30_Thu-Dec24_BO-030.mp4",
-   "caption": "Your weight melts the ice? \ud83e\uddca Not really.\n\nA skate's pressure lowers ice's melting point by only ~0.1 degree - useless on a minus-ten rink. Ice is slippery because it's ALWAYS coated in a thin, liquid-like layer, down to about -30 C. You glide on water that was there before you arrived.\n\nSubscribe to Beyond Obvious for one every day. Did you believe the pressure myth? \ud83d\udc47\n\n#physics #ice #winter #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-25T00:00:00Z",
-   "local_time_note": "Thu Dec 24 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-031",
-   "video_file": "31_Fri-Dec25_BO-031.mp4",
-   "caption": "Snowflakes are just random? \u2744\ufe0f Look closer.\n\nAlmost every snow crystal has EXACTLY six sides. That six comes from one water molecule - its hydrogens sit at ~104.5 degrees, locking ice into a hexagonal lattice. Six arms grow in the same air, so they match. No two are ever identical.\n\nSubscribe to Beyond Obvious for one every day. Ever counted a snowflake's sides? \ud83d\udc47\n\n#science #snow #crystals #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-26T00:00:00Z",
-   "local_time_note": "Fri Dec 25 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-032",
-   "video_file": "32_Sat-Dec26_BO-032.mp4",
-   "caption": "Mirrors swap left and right? \ud83e\ude9e They don't.\n\nA mirror reverses only ONE axis: front to back. Up stays up. Your reflection seems to raise its 'left' hand because YOU turned around to compare - and turning is what swaps left and right. The mirror's innocent.\n\nSubscribe to Beyond Obvious for one every day. Did this break your brain? \ud83d\udc47\n\n#physics #optics #mirror #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-27T00:00:00Z",
-   "local_time_note": "Sat Dec 26 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-033",
-   "video_file": "33_Sun-Dec27_BO-033.mp4",
-   "caption": "Helium speeds up your vocal cords? \ud83c\udf88 Nope.\n\nYour cords vibrate at almost the same rate - the pitch barely moves. Sound just travels ~3x faster in helium (about 1007 vs 343 m/s), so your throat resonates higher. Those raised resonances (formants) are the squeak. Same note, brighter instrument.\n\nSubscribe to Beyond Obvious for one every day. Guess what a HEAVY gas does? \ud83d\udc47\n\n#physics #sound #helium #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-28T00:00:00Z",
-   "local_time_note": "Sun Dec 27 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-034",
-   "video_file": "34_Mon-Dec28_BO-034.mp4",
-   "caption": "The aurora reflects light from below? \ud83c\udf0c No.\n\nThe green is MADE up there: solar particles hit oxygen atoms ~100 km up and excite them. As each electron drops back, the atom emits one exact colour - green at 557.7 nm. It's a fixed colour, not a reflection. Higher up, oxygen glows red.\n\nSubscribe to Beyond Obvious for one every day. Have you seen the aurora in person? \ud83d\udc47\n\n#space #aurora #physics #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-29T00:00:00Z",
-   "local_time_note": "Mon Dec 28 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-035",
-   "video_file": "35_Tue-Dec29_BO-035.mp4",
-   "caption": "The heat just cracks the shell? \ud83c\udf7f Backwards.\n\nThe hull is the hero. Each kernel traps ~14% water that turns to steam, and the shell holds it in until ~135 psi (about 9 atmospheres) and ~180 C. Then it bursts and the steam flash-puffs the starch into foam. It's a tiny pressure cooker.\n\nSubscribe to Beyond Obvious for one every day. Butter or no butter? \ud83d\udc47\n\n#science #food #physics #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-30T00:00:00Z",
-   "local_time_note": "Tue Dec 29 2026, 6:00 PM America/Chicago"
-  },
-  {
-   "episode": "BO-036",
-   "video_file": "36_Wed-Dec30_BO-036.mp4",
-   "caption": "The Moon swells near the horizon? \ud83c\udf15 It's an illusion.\n\nMeasure it: the horizon Moon is actually ~1.5% SMALLER (you're farther from it by up to one Earth radius). Its real size is ~0.5 degree high or low - a coin at arm's length covers it either way. The swelling is all in your head.\n\nSubscribe to Beyond Obvious for one every day. Did you think it really grew? \ud83d\udc47\n\n#astronomy #moon #science #learnontiktok #edutainment #sciencefacts",
-   "publishAt": "2026-12-31T00:00:00Z",
-   "local_time_note": "Wed Dec 30 2026, 6:00 PM America/Chicago"
-  }
- ]
+  "timezone": "America/Chicago",
+  "target_local_time": "18:00",
+  "note": "Weeks 1-5 auto-posting (through Dec 31). IG posts daily; FB schedules weekly; TikTok goes through Buffer (Free plan holds 10 ahead, topped up daily).",
+  "items": [
+    {
+      "episode": "BO-001",
+      "video_file": "02_Thu-Nov26_BO-001.mp4",
+      "caption": "Why don't birds get fried on power lines? 🐦⚡\n\nCurrent only flows when there's a voltage difference. A bird's two feet grip the same wire at almost the same voltage, so almost nothing flows through it. Touch two wires at once, though...\n\n#physics #electricity #science #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-11-27T00:00:00Z",
+      "local_time_note": "Thu Nov 26 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-003",
+      "video_file": "03_Fri-Nov27_BO-003.mp4",
+      "caption": "Why are airplane windows round? ✈️\n\nEarly jets had square windows — and the sharp corners concentrated stress until they cracked in flight. Rounded corners spread the stress out. Engineers learned this the hard way with the de Havilland Comet.\n\n#engineering #aviation #planes #learnontiktok #edutainment",
+      "publishAt": "2026-11-28T00:00:00Z",
+      "local_time_note": "Fri Nov 27 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-004",
+      "video_file": "04_Sat-Nov28_BO-004.mp4",
+      "caption": "Why does your phone's GPS secretly depend on Einstein? 🛰️\n\nClocks on GPS satellites tick faster than clocks on the ground — gravity and speed combined add about 38 microseconds a day. Ignore relativity and your location drifts roughly 10 km every day.\n\n#physics #space #gps #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-11-29T00:00:00Z",
+      "local_time_note": "Sat Nov 28 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-006",
+      "video_file": "05_Sun-Nov29_BO-006.mp4",
+      "caption": "The Sahara was once green — what turned it to sand? 🌿\n\nAbout 6,000 years ago a slow wobble in Earth's orbit pulled the monsoon rains north and the desert bloomed. The wobble will swing back... in a few thousand years.\n\n#geography #earth #sahara #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-11-30T00:00:00Z",
+      "local_time_note": "Sun Nov 29 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-005",
+      "video_file": "06_Mon-Nov30_BO-005.mp4",
+      "caption": "Steel sinks. So how does a steel ship stay up? 🚢\n\nA ship is mostly air. Its hull pushes aside more water-weight than the whole ship weighs, so it floats. Archimedes figured this out over 2,000 years ago.\n\n#physics #science #ships #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-01T00:00:00Z",
+      "local_time_note": "Mon Nov 30 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-007",
+      "video_file": "07_Tue-Dec01_BO-007.mp4",
+      "caption": "Why did this bridge start dancing — then tear itself apart? 🌉\n\nWhen London's Millennium Bridge opened, the crowd's footsteps synced with its tiny sway and amplified it into a wobble. They closed it after two days. It's called synchronous lateral excitation.\n\n#engineering #physics #bridges #learnontiktok #edutainment",
+      "publishAt": "2026-12-02T00:00:00Z",
+      "local_time_note": "Tue Dec 01 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-010",
+      "video_file": "08_Wed-Dec02_BO-010.mp4",
+      "caption": "Why does the thunder reach you seconds after the flash? ⚡\n\nLight is basically instant; sound only travels ~343 m/s. Count the seconds from flash to bang and divide by 3 — that's how many kilometres away the strike is.\n\n#physics #weather #lightning #science #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-03T00:00:00Z",
+      "local_time_note": "Wed Dec 02 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-008",
+      "video_file": "09_Thu-Dec03_BO-008.mp4",
+      "caption": "If it isn't friction, what burns up a spaceship coming home? 🚀\n\nAt ~7.8 km/s a returning capsule slams into the air faster than it can move aside, compressing it into a shock layer thousands of degrees hot. The heat comes from squeezing the air, not rubbing it.\n\n#space #physics #reentry #spacecraft #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-04T00:00:00Z",
+      "local_time_note": "Thu Dec 03 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-009",
+      "video_file": "10_Fri-Dec04_BO-009.mp4",
+      "caption": "There's a 660-tonne ball hidden in this skyscraper. Why? 🏢\n\nIt's a tuned mass damper. The wind sways the tower; the giant sphere swings the opposite way, tuned to the building's own rhythm, and cancels the wobble.\n\n#engineering #architecture #skyscraper #physics #learnontiktok #edutainment",
+      "publishAt": "2026-12-05T00:00:00Z",
+      "local_time_note": "Fri Dec 04 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-011",
+      "video_file": "11_Sat-Dec05_BO-011.mp4",
+      "caption": "Every other solid sinks in its own liquid. Why not ice? ❄️\n\nWater expands when it freezes into an open lattice, so ice is only ~92% as dense as water (just the tip of the iceberg shows). That floating cap insulates lakes so fish survive winter.\n\n#chemistry #physics #water #ice #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-06T00:00:00Z",
+      "local_time_note": "Sat Dec 05 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-014",
+      "video_file": "12_Sun-Dec06_BO-014.mp4",
+      "caption": "The loneliest place on Earth — the nearest people are in orbit 🛰️\n\nAt Point Nemo the closest land is ~2,688 km away. But the ISS orbits just ~400 km up, so when it passes over, the nearest humans are the astronauts overhead. It's also the 'spacecraft cemetery.'\n\n#geography #ocean #space #iss #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-07T00:00:00Z",
+      "local_time_note": "Sun Dec 06 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-012",
+      "video_file": "13_Mon-Dec07_BO-012.mp4",
+      "caption": "Why does the Moon always hide its other side from us? 🌕\n\nIt's tidally locked — it spins exactly once for every lap around Earth (~27.3 days), so one side stays pointed at us. And the 'dark side' isn't dark; it gets the same sunlight. It's just the far side.\n\n#space #astronomy #moon #science #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-08T00:00:00Z",
+      "local_time_note": "Mon Dec 07 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-013",
+      "video_file": "14_Tue-Dec08_BO-013.mp4",
+      "caption": "Fold a paper just 42 times and you'd reach the Moon? 📄\n\nEach fold doubles the thickness. 0.1 mm doubled 42 times shoots past the Moon. In real life you jam up around 7 folds: the stack becomes thicker than it is wide. That's exponential growth.\n\n#math #science #exponential #paper #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-09T00:00:00Z",
+      "local_time_note": "Tue Dec 08 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-015",
+      "video_file": "15_Wed-Dec09_BO-015.mp4",
+      "caption": "Why is the sky blue — and not violet? 🌤️\n\nSunlight is every colour mixed. Air scatters short blue waves far more than red (by one over wavelength to the fourth), so blue fills the sky from every direction. At sunset the light crosses more air, the blue scatters away, and you're left with red.\n\n#physics #optics #science #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-10T00:00:00Z",
+      "local_time_note": "Wed Dec 09 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-020",
+      "video_file": "16_Thu-Dec10_BO-020.mp4",
+      "caption": "Do sinks really swirl backwards in Australia? 🌀\n\nThat's a myth — the Coriolis effect is far too weak to steer a sink; the drain's shape wins. But over something huge like a hurricane it's decisive: storms spin counter-clockwise up north, clockwise down south, and can't even form right at the equator where it drops to zero.\n\n#physics #geography #weather #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-11T00:00:00Z",
+      "local_time_note": "Thu Dec 10 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-016",
+      "video_file": "17_Fri-Dec11_BO-016.mp4",
+      "caption": "How do headphones erase sound... using more sound? 🎧\n\nNot thick foam. A tiny mic samples the incoming noise, and the speaker plays that exact wave flipped upside down. Crest meets trough and they add to nothing — destructive interference.\n\n#physics #sound #waves #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-12T00:00:00Z",
+      "local_time_note": "Fri Dec 11 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-018",
+      "video_file": "18_Sat-Dec12_BO-018.mp4",
+      "caption": "Why is a golf ball covered in hundreds of dimples? ⛳\n\nThey're aerodynamic. A smooth ball drags a wide wake; dimples trip the air into a thin turbulent layer that clings on, shrinking the wake and roughly halving the drag. It's called the drag crisis — and it makes the ball fly about twice as far.\n\n#physics #aerodynamics #golf #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-13T00:00:00Z",
+      "local_time_note": "Sat Dec 12 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-019",
+      "video_file": "19_Sun-Dec13_BO-019.mp4",
+      "caption": "Why won't the Leaning Tower of Pisa just fall over? 🗼\n\nNo glue — just balance. A tower tips only when its centre of mass passes outside its base. Pisa's weight sits only about 2 metres off-centre, and its base is nearly 8 metres wide. It could lean to about 15 degrees before it would ever topple.\n\n#physics #engineering #architecture #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-14T00:00:00Z",
+      "local_time_note": "Sun Dec 13 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-017",
+      "video_file": "20_Mon-Dec14_BO-017.mp4",
+      "caption": "Why do we bolt an extra day onto the calendar? 📅\n\nIt's not for February — it's Earth's orbit. A year is about 365.2422 days, not a round number, so that spare quarter-day piles up. We add a day every four years, then skip three leaps every 400 years. That's why 2000 counted but 1900 didn't, and it keeps the calendar within a day of the seasons for millennia.\n\n#astronomy #calendar #science #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-15T00:00:00Z",
+      "local_time_note": "Mon Dec 14 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-021",
+      "video_file": "21_Tue-Dec15_BO-021.mp4",
+      "caption": "Mountaintops are closer to the Sun. So why are they freezing? 🏔️\n\nBecause a few kilometres is nothing next to 150 million km to the Sun. The real reason is pressure: air thins and expands as it rises, and expanding air cools — about 6.5 °C for every kilometre you climb.\n\n#physics #weather #atmosphere #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-16T00:00:00Z",
+      "local_time_note": "Tue Dec 15 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-023",
+      "video_file": "22_Wed-Dec16_BO-023.mp4",
+      "caption": "Astronauts float because there's no gravity up there... right? 🚀\n\nWrong - gravity up there is still about 90% as strong as down here. They float because they're falling the whole time, while moving sideways at nearly 8 km every second. The ground curves away as fast as they fall, so they keep missing the Earth. That endless fall is an orbit.\n\n#space #physics #astronauts #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-17T00:00:00Z",
+      "local_time_note": "Wed Dec 16 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-024",
+      "video_file": "23_Thu-Dec17_BO-024.mp4",
+      "caption": "Same temperature — so why does metal feel colder than wood? 🥶\n\nIt isn't colder - both are at room temperature. Your skin doesn't feel temperature, it feels heat leaving. Metal pulls heat out of your hand fast, so your skin drops to about 21 °C. Wood barely takes any, so it stays near 30 °C. Same reason tiles feel colder than a rug.\n\n#physics #heat #science #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-18T00:00:00Z",
+      "local_time_note": "Thu Dec 17 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-027",
+      "video_file": "24_Fri-Dec18_BO-027.mp4",
+      "caption": "Why can you never, ever reach the end of a rainbow? 🌈\n\nBecause it isn't a thing in a place. Sunlight enters each raindrop, bounces off the back and comes out bent at about 42 degrees. The rainbow is every drop sitting at that angle from your eye - move and it moves with you. It's really a full circle; the ground just hides the bottom half.\n\n#physics #optics #light #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-19T00:00:00Z",
+      "local_time_note": "Fri Dec 18 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-025",
+      "video_file": "25_Sat-Dec19_BO-025.mp4",
+      "caption": "You can see into a microwave — so why don't the waves cook you? 🍿\n\nThe glass hides a metal mesh with holes about a millimetre wide. A microwave is a wave 12 cm long - far too big to squeeze through, so it bounces back. Light waves are thousands of times smaller than the holes, so they sail right out. You get the view, the popcorn gets the heat.\n\n#physics #waves #technology #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-20T00:00:00Z",
+      "local_time_note": "Sat Dec 19 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-022",
+      "video_file": "26_Sun-Dec20_BO-022.mp4",
+      "caption": "Why do stars twinkle but planets hold steady? ✨\n\nThe star isn't flickering - our air is. Moving pockets of warm and cold air bend the light back and forth in its last split second. A star is a single point, so the whole thing wobbles. A planet is a tiny disc, so its wobbles average out. From space, stars don't twinkle at all.\n\n#astronomy #space #stars #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-21T00:00:00Z",
+      "local_time_note": "Sun Dec 20 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-026",
+      "video_file": "27_Mon-Dec21_BO-026.mp4",
+      "caption": "Rivers run fresh. So why is the sea salty? 🌊\n\nThe salt comes from the rivers. Rain slowly dissolves rock, and rivers carry a tiny pinch of those minerals to the sea. Then the Sun evaporates the water, but the salt stays behind. Repeat for a few billion years and every litre of seawater holds about 35 grams of salt.\n\n#earthscience #ocean #geography #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-22T00:00:00Z",
+      "local_time_note": "Mon Dec 21 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-028",
+      "video_file": "28_Tue-Dec22_BO-028.mp4",
+      "caption": "One Moon — so why does the sea get two high tides a day? 🌕\n\nThe Moon pulls hardest on the near side of the Earth and weakest on the far side. That difference stretches the ocean into two bulges - one facing the Moon, one facing away. The Earth spins under both, so high tide comes about every 12 and a half hours.\n\n#physics #ocean #moon #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-23T00:00:00Z",
+      "local_time_note": "Tue Dec 22 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-029",
+      "video_file": "29_Wed-Dec23_BO-029.mp4",
+      "caption": "If winter isn't Earth drifting from the Sun, what is it? ❄️\n\nWe're actually CLOSEST to the Sun in early January. Distance changes the sunlight by only ~7%. Winter is cold because Earth is tilted 23.4 degrees: your half leans away, the Sun sits low, and the days are short.\n\nSubscribe to Beyond Obvious for one every day. Which one surprised you? 👇\n\n#astronomy #seasons #science #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-24T00:00:00Z",
+      "local_time_note": "Wed Dec 23 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-030",
+      "video_file": "30_Thu-Dec24_BO-030.mp4",
+      "caption": "What actually makes ice slippery under your feet? 🧊\n\nA skate's pressure lowers ice's melting point by only ~0.1 degree - useless on a minus-ten rink. Ice is slippery because it's ALWAYS coated in a thin, liquid-like layer, down to about -30 C. You glide on water that was there before you arrived.\n\nSubscribe to Beyond Obvious for one every day. Did you believe the pressure myth? 👇\n\n#physics #ice #winter #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-25T00:00:00Z",
+      "local_time_note": "Thu Dec 24 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-031",
+      "video_file": "31_Fri-Dec25_BO-031.mp4",
+      "caption": "Why does every snowflake have exactly six sides? ❄️\n\nAlmost every snow crystal has EXACTLY six sides. That six comes from one water molecule - its hydrogens sit at ~104.5 degrees, locking ice into a hexagonal lattice. Six arms grow in the same air, so they match. No two are ever identical.\n\nSubscribe to Beyond Obvious for one every day. Ever counted a snowflake's sides? 👇\n\n#science #snow #crystals #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-26T00:00:00Z",
+      "local_time_note": "Fri Dec 25 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-032",
+      "video_file": "32_Sat-Dec26_BO-032.mp4",
+      "caption": "Why does a mirror flip left-right but not up-down? 🪞\n\nA mirror reverses only ONE axis: front to back. Up stays up. Your reflection seems to raise its 'left' hand because YOU turned around to compare - and turning is what swaps left and right. The mirror's innocent.\n\nSubscribe to Beyond Obvious for one every day. Did this break your brain? 👇\n\n#physics #optics #mirror #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-27T00:00:00Z",
+      "local_time_note": "Sat Dec 26 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-033",
+      "video_file": "33_Sun-Dec27_BO-033.mp4",
+      "caption": "Why does a breath of helium turn your voice to a squeak? 🎈\n\nYour cords vibrate at almost the same rate - the pitch barely moves. Sound just travels ~3x faster in helium (about 1007 vs 343 m/s), so your throat resonates higher. Those raised resonances (formants) are the squeak. Same note, brighter instrument.\n\nSubscribe to Beyond Obvious for one every day. Guess what a HEAVY gas does? 👇\n\n#physics #sound #helium #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-28T00:00:00Z",
+      "local_time_note": "Sun Dec 27 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-034",
+      "video_file": "34_Mon-Dec28_BO-034.mp4",
+      "caption": "What lights up the aurora green, 100 km overhead? 🌌\n\nThe green is MADE up there: solar particles hit oxygen atoms ~100 km up and excite them. As each electron drops back, the atom emits one exact colour - green at 557.7 nm. It's a fixed colour, not a reflection. Higher up, oxygen glows red.\n\nSubscribe to Beyond Obvious for one every day. Have you seen the aurora in person? 👇\n\n#space #aurora #physics #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-29T00:00:00Z",
+      "local_time_note": "Mon Dec 28 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-035",
+      "video_file": "35_Tue-Dec29_BO-035.mp4",
+      "caption": "What's really going on inside a kernel when popcorn pops? 🍿\n\nThe hull is the hero. Each kernel traps ~14% water that turns to steam, and the shell holds it in until ~135 psi (about 9 atmospheres) and ~180 C. Then it bursts and the steam flash-puffs the starch into foam. It's a tiny pressure cooker.\n\nSubscribe to Beyond Obvious for one every day. Butter or no butter? 👇\n\n#science #food #physics #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-30T00:00:00Z",
+      "local_time_note": "Tue Dec 29 2026, 6:00 PM America/Chicago"
+    },
+    {
+      "episode": "BO-036",
+      "video_file": "36_Wed-Dec30_BO-036.mp4",
+      "caption": "Why does the Moon look giant on the horizon? 🌕\n\nMeasure it: the horizon Moon is actually ~1.5% SMALLER (you're farther from it by up to one Earth radius). Its real size is ~0.5 degree high or low - a coin at arm's length covers it either way. The swelling is all in your head.\n\nSubscribe to Beyond Obvious for one every day. Did you think it really grew? 👇\n\n#astronomy #moon #science #learnontiktok #edutainment #sciencefacts",
+      "publishAt": "2026-12-31T00:00:00Z",
+      "local_time_note": "Wed Dec 30 2026, 6:00 PM America/Chicago"
+    }
+  ]
 }
