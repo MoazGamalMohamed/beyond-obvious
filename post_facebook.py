@@ -70,8 +70,18 @@ def main():
             M.log("MISSING:", vpath); continue
         M.log(("publishing" if PUBLISH_NOW else "scheduling") + " FB reel:",
               it["episode"], it.get("local_time_note", ""))
-        vid = post_reel(page_id, tok, vpath, it["caption"] + boost, pub,
-                        publish_now=PUBLISH_NOW)
+        try:
+            vid = post_reel(page_id, tok, vpath, it["caption"] + boost, pub,
+                            publish_now=PUBLISH_NOW)
+        except RuntimeError as e:
+            # Facebook only lets you schedule ~29 days ahead; items beyond that
+            # window aren't an error - a later weekly run schedules them once
+            # their date comes within range. Skip and keep going.
+            msg = str(e)
+            if "scheduled publish time is invalid" in msg or "2325005" in msg:
+                M.log("  skip (beyond FB's ~29-day scheduling window; a later run will catch it):", key)
+                continue
+            raise
         state["posted"][key] = vid
         M.save_json(STATE, state)
         M.log("  scheduled id=", vid)
