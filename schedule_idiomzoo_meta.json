@@ -29,28 +29,32 @@
       "video_file": "hold_your_horses.mp4",
       "publishAt": "2026-11-28T18:00:00Z",
       "caption": "Why is Bruno chasing horses? \"Hold your horses!\" 🐴\nBruno took it literally 😂 Watch Kiki explain what it really means. One idiom a day with Kiki & Bruno 🦜🐶\n\nAnimated cartoon. Music and vocals are AI-generated.",
-      "local_time_note": "Nov 28 midday CT"
+      "local_time_note": "Nov 28 midday CT",
+      "thumb_offset_ms": 2500
     },
     {
       "episode": "IZ-004",
       "video_file": "break_a_leg.mp4",
       "publishAt": "2026-11-29T18:00:00Z",
       "caption": "Why did \"break a leg\" make Bruno panic? 🎭\nBruno took it literally 😂 Watch Kiki explain what it really means. One idiom a day with Kiki & Bruno 🦜🐶\n\nAnimated cartoon. Music and vocals are AI-generated.",
-      "local_time_note": "Nov 29 midday CT"
+      "local_time_note": "Nov 29 midday CT",
+      "thumb_offset_ms": 2500
     },
     {
       "episode": "IZ-005",
       "video_file": "when_pigs_fly.mp4",
       "publishAt": "2026-11-30T18:00:00Z",
       "caption": "Bruno is waiting for pigs to fly. Will they? 🐷\nBruno took it literally 😂 Watch Kiki explain what it really means. One idiom a day with Kiki & Bruno 🦜🐶\n\nAnimated cartoon. Music and vocals are AI-generated.",
-      "local_time_note": "Nov 30 midday CT"
+      "local_time_note": "Nov 30 midday CT",
+      "thumb_offset_ms": 2500
     },
     {
       "episode": "IZ-006",
       "video_file": "cat_out_of_the_bag.mp4",
       "publishAt": "2026-12-01T18:00:00Z",
       "caption": "Who let \"the cat out of the bag\"? 🐱\nBruno took it literally 😂 Watch Kiki explain what it really means. One idiom a day with Kiki & Bruno 🦜🐶\n\nAnimated cartoon. Music and vocals are AI-generated.",
-      "local_time_note": "Dec 1 midday CT"
+      "local_time_note": "Dec 1 midday CT",
+      "thumb_offset_ms": 2500
     }
   ]
 }
