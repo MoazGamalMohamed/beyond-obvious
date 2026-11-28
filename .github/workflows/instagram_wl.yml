@@ -3,6 +3,7 @@ name: What If Lab — Instagram Reel (daily)
 on:
   schedule:
     - cron: "0 21 * * *"     # 21:00 UTC daily = 3:00 PM America/Chicago
+    - cron: "0 9 * * *"      # 2nd daily pass (09:00 UTC) to catch the prior day's slot if the 21:00 run fired late
   workflow_dispatch: {}       # allow manual run
 
 permissions:
