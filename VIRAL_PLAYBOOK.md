@@ -40,8 +40,11 @@ The first rendered frame IS the thumbnail in the feed. It must look like a momen
 walked in on, not a title card.
 
 **Do**
-- Put the brand character **mid-action** in an intriguing situation
-  (BO = NOODLE; WL and IZ = Kiki 🦜 & Bruno 🐶; in IZ, Bruno mid-way through taking the idiom literally).
+- Put the brand character **mid-action** in an intriguing situation. Each brand has its
+  own cast — never mix them:
+  - **Beyond Obvious** = NOODLE (with Pip).
+  - **What If Lab** = **Watt**, the lab's single curious mascot.
+  - **Idiom Zoo** = Kiki 🦜 & Bruno 🐶 (first frame: Bruno mid-way through taking the idiom literally).
 - Show tension or a question on screen, not the explanation.
 - Big, readable cover line that teases (≤ ~5 words). Clear figure/ground.
 
@@ -56,7 +59,7 @@ walked in on, not a title card.
 - Platform title  = first line of each item's `caption` in the schedule JSON
   (`schedule.json` for BO, `schedule_whatiflab.json`, `schedule_idiomzoo_*.json`).
 - First frame/thumbnail = `cover_overlay` + `META(..., cap_y=…)` in each
-  `src/episodes/epNNN_*.py` module (and the WL/IZ equivalents).
+  `src/episodes/epNNN_*.py` module (and the WL/IZ equivalents; WL brand kit = `wif_brand.py`).
 - Idiom Zoo: `iz_engine.draw_cover()` renders the cold open (first ~0.5–1.2 s): the pack's
   *gag* scene ~1 s in (Bruno mid-gag) + the episode's `cover` line from `idiom_bank.json`
   (falls back to `hook_text`). The old "IDIOM ZOO" logo card is gone. Each bank entry also
@@ -132,8 +135,11 @@ thumbnail and the YouTube title. Keep each brand's brief separate.
   (a plausible mistake → curiosity). Give Kiki & Bruno their own jokes and timing.
 
 ### What If Lab — change one rule, follow one person (7–10 min)
-- Establish the channel's **own cast and look from its own material.** State **one precise
-  change** to the world and **label it as the fictional assumption.**
+- The channel's own cast: **Watt**, the lab's single curious mascot who runs the thought
+  experiments (voice `af_bella`; the recurring **button gag** is a WL signature). Watt hosts; the
+  experiment then follows **one** subject through the consequences. (Kiki & Bruno are Idiom Zoo's —
+  never use them here.)
+- State **one precise change** to the world and **label it as the fictional assumption.**
 - Show an ordinary task **before** the change, replay it **after**, and let **one failed solution
   cause the next problem.** Track the same person / object / props through every attempt.
 - **Verify the downstream physics**; separate robust consequences from uncertain ones.

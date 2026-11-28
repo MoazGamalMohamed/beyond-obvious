@@ -84,7 +84,8 @@ from "Who Stole the Moon?".
 - **Alt titles:** "The Only One Who Prepared Was the Parrot 🦜" · "Live Radio, Zero Prep — Can Kiki Save It? 🎙️"
 
 ### WL-L2 — What If Lab (7–10 min)
-Change one rule, follow one person.
+Change one rule, follow one person. Hosted by **Watt**, WL's single curious lab mascot (the
+channel's established cast); the experiment follows one subject — a baker.
 - **Premise:** A bakery floor loses **all** friction for one minute (walls + counter keep theirs).
   A baker has to deliver one cake across the room.
 - **Rule (labeled fictional assumption):** μ_floor = 0 for 60 s; everything else normal.
@@ -94,7 +95,8 @@ Change one rule, follow one person.
 - **Verify:** Newton's first law + conservation of momentum; separate **robust** consequences
   (can't walk, momentum carries you) from **uncertain** ones (exact spin / trajectory).
   **End by returning to the opening task** so the change is unmistakable.
-- **First frame / thumbnail:** baker mid-slip, cake flying, cover line "The floor stopped gripping"
+- **First frame / thumbnail:** Watt presenting the rule, then the baker mid-slip with the cake
+  flying; cover line "The floor stopped gripping"
 - **Send-to-a-friend moment:** can the audience spot the workable solution before the baker does?
 - **Alt titles:** "One Minute, No Friction — Can He Deliver the Cake? 🧁" · "The Floor Turned to Ice (Sort Of) 🧁"
 
@@ -103,7 +105,9 @@ Existing render kit (`studio/concepts/render_kit/`) + `manim_fx/` for animated g
 (BO/WL) · FFmpeg/ffprobe for export checks · faster-whisper for the independent transcript ·
 Blender / Shotcut / Kdenlive where an editable timeline helps. No paid tools.
 
-## Open items for moaz
-- **WL cast:** the brief says establish WL's *own* characters from its own material; the current
-  playbook §2 lists Kiki & Bruno under WL too. Confirm WL's host/cast so BO/IZ/WL stay cleanly separate.
+## Notes
+- **WL cast locked:** What If Lab's established character is **Watt**, the single curious lab
+  mascot (from `brand2/WEEK1_PLAN.md` + `WIRING_PLAN.md` and the render brand kit `wif_brand.py`;
+  voice `af_bella`, the "button" gag). Kiki & Bruno belong to **Idiom Zoo only** — never mix.
+  The playbook has been corrected to match.
 - Dates are production targets; publishing is yours to trigger.
