@@ -3,6 +3,7 @@ name: Instagram Reel (daily)
 on:
   schedule:
     - cron: "0 0 * * *"      # 00:00 UTC daily = 6:00 PM America/Chicago (CST)
+    - cron: "0 12 * * *"     # 2nd daily pass (12:00 UTC) so the day's Reel still posts if the 00:00 run fires late
   workflow_dispatch: {}       # allow manual run
 
 permissions:
