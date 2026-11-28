@@ -23,6 +23,9 @@ SCRATCH = "/tmp/iz_acestep"         # big scratch disk: Space clone + model weig
 SPACE = os.path.join(SCRATCH, "acestep_space")
 os.makedirs(SCRATCH, exist_ok=True)
 os.environ.setdefault("HF_HOME", os.path.join(SCRATCH, "hf_home"))
+# T4 = 15 GB: the XL-turbo DiT + VAE decode don't fit together, so offload the DiT
+# to CPU between steps and let the allocator use expandable segments.
+os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 SPACE_REPO = "https://huggingface.co/spaces/victor/ace-step-jam"
 
 # Same base style tags the ZeroGPU path uses (gen_all.py); BPM appended per episode.
@@ -96,8 +99,8 @@ def main():
         device="auto",
         use_flash_attention=handler.is_flash_attention_available(),
         compile_model=False,
-        offload_to_cpu=False,
-        offload_dit_to_cpu=False,
+        offload_to_cpu=True,
+        offload_dit_to_cpu=True,
     )
     print("initialize_service:", status, ready, flush=True)
     subprocess.call("df -h /kaggle/working /tmp", shell=True)
@@ -126,6 +129,7 @@ def main():
                 vocal_language="en",
             )
             data, sr = extract_wav(result)
+            del result
             out = os.path.join(WORK, f"{slug}.wav")
             sf.write(out, data, sr)
             print(slug, "OK", out, os.path.getsize(out), "bytes", "sr=", sr, flush=True)
@@ -133,6 +137,12 @@ def main():
         except Exception as e:
             print(slug, "ERROR", type(e).__name__, str(e)[:400], flush=True)
             traceback.print_exc()
+        finally:
+            try:
+                import torch, gc
+                gc.collect(); torch.cuda.empty_cache()
+            except Exception:
+                pass
 
     print("DONE generated=", done, flush=True)
     if not done:
