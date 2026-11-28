@@ -19,7 +19,8 @@
       "video_file": "WL-002_watermelon-seed.mp4",
       "caption": "Swallow a watermelon seed and a watermelon grows in your tummy? 🍉😄 Nope, nothing happens — no sunlight or soil inside you, so a seed can't sprout. 🦜🐶\n\nAnimated cartoon. Voices are synthetic (AI text-to-speech).",
       "publishAt": "2026-11-26T21:00:00Z",
-      "local_time_note": "Wed Nov 26 2026, 3:00 PM America/Chicago"
+      "local_time_note": "Wed Nov 26 2026, 3:00 PM America/Chicago",
+      "thumb_offset_ms": 10000
     },
     {
       "episode": "WL-003",
