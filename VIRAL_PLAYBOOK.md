@@ -40,7 +40,7 @@ walked in on, not a title card.
 
 **Do**
 - Put the brand character **mid-action** in an intriguing situation
-  (BO = NOODLE; WL = Kiki 🦜 / Bruno 🐶; IZ = the critters).
+  (BO = NOODLE; WL and IZ = Kiki 🦜 & Bruno 🐶; in IZ, Bruno mid-way through taking the idiom literally).
 - Show tension or a question on screen, not the explanation.
 - Big, readable cover line that teases (≤ ~5 words). Clear figure/ground.
 
@@ -56,6 +56,10 @@ walked in on, not a title card.
   (`schedule.json` for BO, `schedule_whatiflab.json`, `schedule_idiomzoo_*.json`).
 - First frame/thumbnail = `cover_overlay` + `META(..., cap_y=…)` in each
   `src/episodes/epNNN_*.py` module (and the WL/IZ equivalents).
+- Idiom Zoo: `iz_engine.draw_cover()` renders the cold open (first ~0.5–1.2 s): the pack's
+  *gag* scene ~1 s in (Bruno mid-gag) + the episode's `cover` line from `idiom_bank.json`
+  (falls back to `hook_text`). The old "IDIOM ZOO" logo card is gone. Each bank entry also
+  carries its platform `title` (hook first, then the idiom in quotes for search, 1 emoji).
 - Already-rendered, already-scheduled videos keep their covers unless re-rendered;
   retitling their captions (unposted items only) is safe and reversible.
 
