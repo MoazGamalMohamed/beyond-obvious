@@ -165,9 +165,15 @@ def main():
         for name in sorted(os.listdir(DL)):
             if name.endswith((".log", ".txt")):
                 path = os.path.join(DL, name)
-                tail = open(path, errors="replace").read()[-6000:]
+                txt = open(path, errors="replace").read()
+                keys = ("initialize_service", "NOT READY", "Filesystem", "/kaggle/working",
+                        "overlay", "GPU", "No space", "Error", "DONE")
+                hits = [ln for ln in txt.replace("\\n", "\n").splitlines()
+                        if any(k in ln for k in keys)]
+                log("---- key lines of", name, "----")
+                log("\n".join(hits[:60])[:8000])
                 log("---- tail of", name, "----")
-                log(tail)
+                log(txt[-4000:])
         return 2
 
     os.makedirs(OUT, exist_ok=True)
