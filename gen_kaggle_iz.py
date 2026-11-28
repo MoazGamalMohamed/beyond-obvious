@@ -129,6 +129,8 @@ def main():
     # Resume instead of re-queueing: if the last pushed version is still queued or
     # running (a previous dispatch timed out in Kaggle's GPU queue), keep waiting on
     # it; pushing again would drop it to the back of the queue.
+    r = run(["kaggle", "kernels", "list", "--mine", "--page-size", "20"])
+    log("my kernels:\n" + (r.stdout + r.stderr).strip()[:3000])
     r = run(["kaggle", "kernels", "status", kid])
     m = re.search(r'status\s+"(?:kernelworkerstatus\.)?([a-z_]+)"', (r.stdout + r.stderr).lower())
     prev = m.group(1) if m else ""
