@@ -5,7 +5,10 @@ name: Instagram Reel - Idiom Zoo
 # post to Beyond Obvious or What If Lab.
 
 on:
-  workflow_dispatch: {}
+  schedule:
+    - cron: "0 18 * * *"     # 18:00 UTC daily = 12:00 PM America/Chicago (CST) — Idiom Zoo daily slot
+    - cron: "0 23 * * *"     # 2nd daily pass (23:00 UTC, same day) re-posts today's slot if the 18:00 run failed; CATCHUP also recovers a missed prior day
+  workflow_dispatch: {}       # allow manual run
 
 permissions:
   contents: write
