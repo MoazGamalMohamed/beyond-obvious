@@ -1,7 +1,7 @@
 {
  "timezone": "America/Chicago",
  "target_local_time": "18:00",
- "note": "Weeks 1-4 auto-posting. BO-002 (Greenland, Nov 25) was posted by hand on FB+IG. IG posts daily; FB schedules weekly; TikTok goes through Buffer from week 4 (weeks 1-3 were uploaded to TikTok by hand).",
+ "note": "Weeks 1-5 auto-posting (through Dec 31). IG posts daily; FB schedules weekly; TikTok goes through Buffer (Free plan holds 10 ahead, topped up daily).",
  "items": [
   {
    "episode": "BO-001",
@@ -191,6 +191,62 @@
    "caption": "One Moon... so why two high tides a day? \ud83c\udf15\n\nThe Moon pulls hardest on the near side of the Earth and weakest on the far side. That difference stretches the ocean into two bulges - one facing the Moon, one facing away. The Earth spins under both, so high tide comes about every 12 and a half hours.\n\n#physics #ocean #moon #learnontiktok #edutainment #sciencefacts",
    "publishAt": "2026-12-23T00:00:00Z",
    "local_time_note": "Tue Dec 22 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-029",
+   "video_file": "29_Wed-Dec23_BO-029.mp4",
+   "caption": "Winter = Earth far from the Sun? \u2744\ufe0f Nope.\n\nWe're actually CLOSEST to the Sun in early January. Distance changes the sunlight by only ~7%. Winter is cold because Earth is tilted 23.4 degrees: your half leans away, the Sun sits low, and the days are short.\n\nSubscribe to Beyond Obvious for one every day. Which one surprised you? \ud83d\udc47\n\n#astronomy #seasons #science #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-24T00:00:00Z",
+   "local_time_note": "Wed Dec 23 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-030",
+   "video_file": "30_Thu-Dec24_BO-030.mp4",
+   "caption": "Your weight melts the ice? \ud83e\uddca Not really.\n\nA skate's pressure lowers ice's melting point by only ~0.1 degree - useless on a minus-ten rink. Ice is slippery because it's ALWAYS coated in a thin, liquid-like layer, down to about -30 C. You glide on water that was there before you arrived.\n\nSubscribe to Beyond Obvious for one every day. Did you believe the pressure myth? \ud83d\udc47\n\n#physics #ice #winter #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-25T00:00:00Z",
+   "local_time_note": "Thu Dec 24 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-031",
+   "video_file": "31_Fri-Dec25_BO-031.mp4",
+   "caption": "Snowflakes are just random? \u2744\ufe0f Look closer.\n\nAlmost every snow crystal has EXACTLY six sides. That six comes from one water molecule - its hydrogens sit at ~104.5 degrees, locking ice into a hexagonal lattice. Six arms grow in the same air, so they match. No two are ever identical.\n\nSubscribe to Beyond Obvious for one every day. Ever counted a snowflake's sides? \ud83d\udc47\n\n#science #snow #crystals #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-26T00:00:00Z",
+   "local_time_note": "Fri Dec 25 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-032",
+   "video_file": "32_Sat-Dec26_BO-032.mp4",
+   "caption": "Mirrors swap left and right? \ud83e\ude9e They don't.\n\nA mirror reverses only ONE axis: front to back. Up stays up. Your reflection seems to raise its 'left' hand because YOU turned around to compare - and turning is what swaps left and right. The mirror's innocent.\n\nSubscribe to Beyond Obvious for one every day. Did this break your brain? \ud83d\udc47\n\n#physics #optics #mirror #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-27T00:00:00Z",
+   "local_time_note": "Sat Dec 26 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-033",
+   "video_file": "33_Sun-Dec27_BO-033.mp4",
+   "caption": "Helium speeds up your vocal cords? \ud83c\udf88 Nope.\n\nYour cords vibrate at almost the same rate - the pitch barely moves. Sound just travels ~3x faster in helium (about 1007 vs 343 m/s), so your throat resonates higher. Those raised resonances (formants) are the squeak. Same note, brighter instrument.\n\nSubscribe to Beyond Obvious for one every day. Guess what a HEAVY gas does? \ud83d\udc47\n\n#physics #sound #helium #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-28T00:00:00Z",
+   "local_time_note": "Sun Dec 27 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-034",
+   "video_file": "34_Mon-Dec28_BO-034.mp4",
+   "caption": "The aurora reflects light from below? \ud83c\udf0c No.\n\nThe green is MADE up there: solar particles hit oxygen atoms ~100 km up and excite them. As each electron drops back, the atom emits one exact colour - green at 557.7 nm. It's a fixed colour, not a reflection. Higher up, oxygen glows red.\n\nSubscribe to Beyond Obvious for one every day. Have you seen the aurora in person? \ud83d\udc47\n\n#space #aurora #physics #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-29T00:00:00Z",
+   "local_time_note": "Mon Dec 28 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-035",
+   "video_file": "35_Tue-Dec29_BO-035.mp4",
+   "caption": "The heat just cracks the shell? \ud83c\udf7f Backwards.\n\nThe hull is the hero. Each kernel traps ~14% water that turns to steam, and the shell holds it in until ~135 psi (about 9 atmospheres) and ~180 C. Then it bursts and the steam flash-puffs the starch into foam. It's a tiny pressure cooker.\n\nSubscribe to Beyond Obvious for one every day. Butter or no butter? \ud83d\udc47\n\n#science #food #physics #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-30T00:00:00Z",
+   "local_time_note": "Tue Dec 29 2026, 6:00 PM America/Chicago"
+  },
+  {
+   "episode": "BO-036",
+   "video_file": "36_Wed-Dec30_BO-036.mp4",
+   "caption": "The Moon swells near the horizon? \ud83c\udf15 It's an illusion.\n\nMeasure it: the horizon Moon is actually ~1.5% SMALLER (you're farther from it by up to one Earth radius). Its real size is ~0.5 degree high or low - a coin at arm's length covers it either way. The swelling is all in your head.\n\nSubscribe to Beyond Obvious for one every day. Did you think it really grew? \ud83d\udc47\n\n#astronomy #moon #science #learnontiktok #edutainment #sciencefacts",
+   "publishAt": "2026-12-31T00:00:00Z",
+   "local_time_note": "Wed Dec 30 2026, 6:00 PM America/Chicago"
   }
  ]
 }
