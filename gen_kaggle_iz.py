@@ -18,6 +18,7 @@ single reusable slug per account, re-run on each dispatch.
 import os
 import sys
 import json
+import re
 import time
 import glob
 import base64
@@ -130,8 +131,8 @@ def main():
         log("stderr:", r.stderr.strip())
     kid = f"{user}/{KERNEL_SLUG}"
 
-    # The CLI prints e.g.  <ref> has status "complete"  (also: queued, running,
-    # error, cancelRequested, cancelAcknowledged). Match the quoted state word.
+    # The CLI prints e.g.  <ref> has status "complete"  or, on newer CLIs,
+    #   <ref> has status "KernelWorkerStatus.ERROR". Normalise to the bare word.
     deadline = time.time() + TIMEOUT_MIN * 60
     status = ""
     while time.time() < deadline:
@@ -139,25 +140,35 @@ def main():
         r = run(["kaggle", "kernels", "status", kid])
         out = (r.stdout + r.stderr).strip()
         log(out)
-        low = out.lower()
-        if '"complete"' in low:
+        m = re.search(r'status\s+"(?:kernelworkerstatus\.)?([a-z_]+)"', out.lower())
+        word = m.group(1) if m else ""
+        if word == "complete":
             status = "complete"
             break
-        if '"error"' in low or '"cancel' in low:
-            status = "error"
+        if word in ("error", "cancel_requested", "cancel_acknowledged",
+                    "cancelrequested", "cancelacknowledged") or word.startswith("cancel"):
+            status = word
             break
         # otherwise queued/running -> keep polling
-    if status != "complete":
-        log("Kernel did not complete in time (status:", status or "timeout", ").")
-        return 2
 
     if os.path.isdir(DL):
         shutil.rmtree(DL)
     os.makedirs(DL)
+    # Always fetch the output: on failure it carries the kernel log we need.
     r = run(["kaggle", "kernels", "output", kid, "-p", DL])
     log(r.stdout.strip())
     if r.stderr.strip():
         log("stderr:", r.stderr.strip())
+
+    if status != "complete":
+        log("Kernel did not complete (status:", status or "timeout", ").")
+        for name in sorted(os.listdir(DL)):
+            if name.endswith((".log", ".txt")):
+                path = os.path.join(DL, name)
+                tail = open(path, errors="replace").read()[-6000:]
+                log("---- tail of", name, "----")
+                log(tail)
+        return 2
 
     os.makedirs(OUT, exist_ok=True)
     got = []
