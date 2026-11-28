@@ -23,6 +23,13 @@ jobs:
           META_PAGE_ID: "1484071088120232"
           SCHEDULE_FILE: schedule_whatiflab.json
           STATE_FILE: state_ig_wl.json
+          # IG fetches the Reel from GitHub Pages (docs/) as video/mp4 instead of
+          # the resumable byte upload, which hit ProcessingFailedError. WL videos
+          # are published to docs/ alongside the repo videos/ copy.
+          VIDEO_BASE_URL: "https://moazgamalmohamed.github.io/beyond-obvious"
+          # Self-heal: post the oldest not-yet-posted WL slot (catches up a day
+          # whose run failed, e.g. WL-003 on Nov 27).
+          CATCHUP: "1"
         run: python post_instagram.py
       - name: Save state
         run: |
