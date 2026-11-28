@@ -69,3 +69,31 @@ walked in on, not a title card.
 - [ ] ≤ 1 emoji in the title; concrete and short.
 - [ ] First frame shows a character mid-action, cover line teases only.
 - [ ] Brand voice/characters not mixed with another brand.
+
+## 5. Profiles, monetization & comment rules (2026)
+
+Full per-account status lives in `MONETIZATION_READINESS.md`. The short version:
+
+**Every program is follower/view-gated** — there is nothing to "switch on" while the accounts are
+new. Keep every profile complete, correctly categorised and in good standing so monetization
+unlocks the moment reach arrives. Current gates: YouTube 1,000 subs + (4,000 watch-hrs/12 mo or
+10 M Shorts views/90 d); TikTok 10,000 followers + 100 K views/30 d + videos **> 1 min**; Facebook
+Stars 500 followers/30 d, Subscriptions 5,000; Instagram Creator account + followers. (YouTube's
+bar rises on Feb 1 2027 — current members are grandfathered, so crossing 1,000 subs before then
+locks in the easier terms.)
+
+**Account types:** YouTube channels and Facebook Pages are already "professional"; Instagram must be a
+**Creator (Professional)** account; **TikTok must stay a PERSONAL public account** — Business
+accounts are *ineligible* for Creator Rewards, so do **not** switch TikTok to Business.
+
+**Comment on every upload (rule #7, made concrete):** post the brand's own first comment — an easy
+end-question — right after the video goes live, and pin it.
+- Instagram already does this automatically (per-brand `_first_comment` in the schedule).
+- Facebook and YouTube schedule ahead, so their first comment must go up in a **go-live pass** (owned
+  by the daily content-ops job). The YouTube API can post the comment but **cannot pin** it — pinning
+  stays a 1-tap manual step.
+- Per-brand first-comment text (never cross brands):
+  - Beyond Obvious — `Which one surprised you? 👇 New science short every day.`
+  - What If Lab — `Did this one surprise you? 👀 One myth busted every day.`
+  - Idiom Zoo — `Which idiom should Kiki & Bruno sing next? 🎵`
+- Keep `_boost`/`_first_comment` set per-schedule so one brand's CTA/hashtags never appear on another.
