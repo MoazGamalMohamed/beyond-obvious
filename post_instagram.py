@@ -28,21 +28,29 @@ DEFAULT_BOOST = ("\n\nNew science short every day — follow @beyondobvious for 
 DEFAULT_FIRST_COMMENT = "Which one surprised you? \U0001f447 Follow for a new science short every day!"
 
 
-def publish_reel(ig_id, tok, video_path, caption, video_url=None):
+def _with_thumb(data, thumb_offset):
+    """Reel cover = the frame at thumb_offset ms (schedule item `thumb_offset_ms`).
+    Without it Instagram uses frame 0, which for older renders is a blank intro card."""
+    if thumb_offset:
+        data["thumb_offset"] = str(int(thumb_offset))
+    return data
+
+
+def publish_reel(ig_id, tok, video_path, caption, video_url=None, thumb_offset=None):
     # 1) create the Reels container
     if video_url:
         # Preferred: Instagram fetches the file from a public URL (served as
         # video/mp4). Far more reliable than the resumable byte upload, which
         # returns ProcessingFailedError for some files.
         j = M._req("%s/%s/media" % (M.GRAPH, ig_id),
-                   data={"media_type": "REELS", "video_url": video_url,
-                         "caption": caption, "access_token": tok}, method="POST")
+                   data=_with_thumb({"media_type": "REELS", "video_url": video_url,
+                         "caption": caption, "access_token": tok}, thumb_offset), method="POST")
         cid = j["id"]
     else:
         # Fallback: resumable binary upload of the local file.
         j = M._req("%s/%s/media" % (M.GRAPH, ig_id),
-                   data={"media_type": "REELS", "upload_type": "resumable",
-                         "caption": caption, "access_token": tok}, method="POST")
+                   data=_with_thumb({"media_type": "REELS", "upload_type": "resumable",
+                         "caption": caption, "access_token": tok}, thumb_offset), method="POST")
         cid = j["id"]
         size = os.path.getsize(video_path)
         with open(video_path, "rb") as f:
@@ -110,7 +118,8 @@ def main():
     vurl = (VIDEO_BASE_URL + "/" + due["video_file"]) if VIDEO_BASE_URL else None
     M.log("publishing IG reel:", due["episode"], due.get("local_time_note", ""),
           "(via hosted URL)" if vurl else "(via upload)")
-    mid = publish_reel(ig_id, tok, vpath, due["caption"] + boost, video_url=vurl)
+    mid = publish_reel(ig_id, tok, vpath, due["caption"] + boost, video_url=vurl,
+                       thumb_offset=due.get("thumb_offset_ms"))
     state["posted"][due["video_file"]] = mid
     M.save_json(STATE, state)
     M.log("  published id=", mid)
