@@ -1,0 +1,5 @@
+# manim_fx — free / open-source only.
+# Tested with Python 3.12 and Manim Community 0.22.1.
+# System libraries required: ffmpeg, cairo, pango (see README.md).
+# LaTeX is optional (only upgrades the equation caption); not needed otherwise.
+manim==0.22.1
