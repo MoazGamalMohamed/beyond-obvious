@@ -34,7 +34,7 @@ DL = os.path.join(HERE, "_kaggle_out")
 KERNEL_SLUG = "iz-ace-step-gen"  # must equal the slug Kaggle derives from the title "IZ ACE-Step gen"; a mismatch makes status/output poll a nonexistent kernel
 MINBYTES = 100_000
 POLL_SECONDS = 30
-TIMEOUT_MIN = 50
+TIMEOUT_MIN = int(os.environ.get("KAGGLE_TIMEOUT_MIN", "170"))  # GPU queue can be long
 
 
 def log(*a):
@@ -124,12 +124,22 @@ def main():
     user = setup_auth()
     log("pending:", [e["slug"] for e in eps])
     build_push_dir(user, eps)
-
-    r = run(["kaggle", "kernels", "push", "-p", PUSH])
-    log(r.stdout.strip())
-    if r.stderr.strip():
-        log("stderr:", r.stderr.strip())
     kid = f"{user}/{KERNEL_SLUG}"
+
+    # Resume instead of re-queueing: if the last pushed version is still queued or
+    # running (a previous dispatch timed out in Kaggle's GPU queue), keep waiting on
+    # it; pushing again would drop it to the back of the queue.
+    r = run(["kaggle", "kernels", "status", kid])
+    m = re.search(r'status\s+"(?:kernelworkerstatus\.)?([a-z_]+)"', (r.stdout + r.stderr).lower())
+    prev = m.group(1) if m else ""
+    log("previous kernel status:", prev or "(none)")
+    if prev in ("queued", "running"):
+        log("Previous version still", prev, "- waiting on it instead of pushing.")
+    else:
+        r = run(["kaggle", "kernels", "push", "-p", PUSH])
+        log(r.stdout.strip())
+        if r.stderr.strip():
+            log("stderr:", r.stderr.strip())
 
     # The CLI prints e.g.  <ref> has status "complete"  or, on newer CLIs,
     #   <ref> has status "KernelWorkerStatus.ERROR". Normalise to the bare word.
