@@ -18,8 +18,11 @@ import os, sys, json, base64, subprocess, traceback
 import numpy as np
 import soundfile as sf
 
-WORK = "/kaggle/working"
-SPACE = os.path.join(WORK, "acestep_space")
+WORK = "/kaggle/working"          # outputs only (20 GB cap, downloaded afterwards)
+SCRATCH = "/tmp/iz_acestep"         # big scratch disk: Space clone + model weights
+SPACE = os.path.join(SCRATCH, "acestep_space")
+os.makedirs(SCRATCH, exist_ok=True)
+os.environ.setdefault("HF_HOME", os.path.join(SCRATCH, "hf_home"))
 SPACE_REPO = "https://huggingface.co/spaces/victor/ace-step-jam"
 
 # Same base style tags the ZeroGPU path uses (gen_all.py); BPM appended per episode.
@@ -44,7 +47,7 @@ def setup():
     if not os.path.isdir(SPACE):
         sh(f"git clone --depth 1 {SPACE_REPO} {SPACE}")
     req_in = os.path.join(SPACE, "requirements.txt")
-    req_out = os.path.join(WORK, "reqs_filtered.txt")
+    req_out = os.path.join(SCRATCH, "reqs_filtered.txt")
     # Keep Kaggle's CUDA-matched torch stack; drop only the Gradio-server/app-only
     # deps. `spaces` is kept (tiny, and some handler builds import it; it no-ops off
     # Hugging Face ZeroGPU infra, so direct generate_music() runs on Kaggle's GPU).
@@ -80,10 +83,11 @@ def extract_wav(result):
 
 
 def main():
+    subprocess.call("df -h /kaggle/working /tmp; nvidia-smi -L", shell=True)
     setup()
     from acestep.handler import AceStepHandler
 
-    storage = os.path.join(WORK, "_storage")
+    storage = os.path.join(SCRATCH, "_storage")
     os.makedirs(storage, exist_ok=True)
     handler = AceStepHandler(persistent_storage_path=storage)
     status, ready = handler.initialize_service(
@@ -96,6 +100,10 @@ def main():
         offload_dit_to_cpu=False,
     )
     print("initialize_service:", status, ready, flush=True)
+    subprocess.call("df -h /kaggle/working /tmp", shell=True)
+    if not ready:
+        print("MODEL NOT READY - aborting before generation", flush=True)
+        sys.exit(1)
 
     done = []
     for ep in EPISODES:
