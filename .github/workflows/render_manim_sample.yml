@@ -1,0 +1,41 @@
+name: Render Manim sample
+
+# Renders the What If Lab "animated equation/graph" beat on every PR that touches
+# manim_fx, and uploads the resulting 1080x1920 clip as a build artifact. This is the
+# free, independent proof that the kit renders from scratch (no LaTeX needed).
+
+on:
+  pull_request:
+    paths:
+      - 'manim_fx/**'
+      - '.github/workflows/render_manim_sample.yml'
+  workflow_dispatch:
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install system libraries (free)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg libcairo2-dev libpango1.0-dev pkg-config
+
+      - name: Install Manim
+        run: pip install -r manim_fx/requirements.txt
+
+      - name: Render the sample beat
+        working-directory: manim_fx
+        run: python render.py --config configs/whatiflab_moon_tides.json --out out/whatiflab_moon.mp4
+
+      - name: Upload the clip
+        uses: actions/upload-artifact@v4
+        with:
+          name: whatiflab_moon_beat
+          path: manim_fx/out/whatiflab_moon.mp4
+          if-no-files-found: error

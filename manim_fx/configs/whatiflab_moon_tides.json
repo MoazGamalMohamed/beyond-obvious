@@ -1,0 +1,23 @@
+{
+  "_comment": "What If Lab sample beat. Change any value here to re-skin the clip -- no code edits needed. 'relationship' is a named model (power: y = coeff * x**power), so there is no arbitrary code to evaluate.",
+  "title": "What if the Moon vanished?",
+  "subtitle": "Tidal force vs. distance",
+  "x_label": "Distance d  (Moon = 1)",
+  "y_label": "Tidal force  (relative)",
+  "relationship": { "kind": "power", "coeff": 1.0, "power": -3.0 },
+  "x_range": [0.7, 3.0, 0.5],
+  "y_range": [0.0, 3.0, 1.0],
+  "highlight_x": 1.0,
+  "highlight_label": "the Moon",
+  "readout_name": "force",
+  "equation_text": "F_tidal  ∝  1 / d³",
+  "equation_tex": "F_{\\text{tidal}} \\;\\propto\\; \\dfrac{1}{d^{3}}",
+  "final_line": "Remove it → the tides go flat.",
+  "colors": {
+    "bg": "#0E1116",
+    "axis": "#9AA3AF",
+    "curve": "#4CC9F0",
+    "hilite": "#F7B32B",
+    "ink": "#F5F7FA"
+  }
+}
