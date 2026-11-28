@@ -116,6 +116,24 @@ def run(cmd):
     return subprocess.run(cmd, capture_output=True, text=True)
 
 
+def harvest(kid, eps):
+    """Download the kernel's current output and copy any pending song it holds into OUT."""
+    if os.path.isdir(DL):
+        shutil.rmtree(DL)
+    os.makedirs(DL)
+    r = run(["kaggle", "kernels", "output", kid, "-p", DL])
+    if r.stderr.strip():
+        log("stderr:", r.stderr.strip()[:2000])
+    os.makedirs(OUT, exist_ok=True)
+    got = []
+    for e in eps:
+        src = os.path.join(DL, e["slug"] + ".wav")
+        if os.path.exists(src) and os.path.getsize(src) > MINBYTES:
+            shutil.copy(src, os.path.join(OUT, e["slug"] + ".wav"))
+            got.append(e["slug"])
+    return got
+
+
 def main():
     eps = pending()
     if not eps:
@@ -135,6 +153,18 @@ def main():
     m = re.search(r'status\s+"(?:kernelworkerstatus\.)?([a-z_]+)"', (r.stdout + r.stderr).lower())
     prev = m.group(1) if m else ""
     log("previous kernel status:", prev or "(none)")
+    if prev == "complete":
+        # A version that finished after an earlier dispatch timed out still holds its
+        # songs: harvest them before pushing, so finished GPU work is never thrown away.
+        got = harvest(kid, eps)
+        if got:
+            log("harvested from the previous run:", got)
+        eps = [e for e in eps if e["slug"] not in got]
+        if not eps:
+            log("All pending songs came from the previous run - nothing to push.")
+            return 0
+        build_push_dir(user, eps)
+        log("still pending:", [e["slug"] for e in eps])
     if prev in ("queued", "running"):
         log("Previous version still", prev, "- waiting on it instead of pushing.")
     else:
