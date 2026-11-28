@@ -1,0 +1,38 @@
+name: Long-form videos -> Facebook (full)
+
+# Posts the three long-form brand videos to each brand's Facebook Page as full
+# Page videos. Runs when pushed to the working branch (no manual dispatch needed).
+# Idempotent via longform_fb_state.json.
+
+on:
+  push:
+    branches: [claude/project-thread-sj3iu8]
+    paths:
+      - "longform_fb.py"
+      - ".github/workflows/longform_fb.yml"
+      - "longform/**"
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install deps
+        run: pip install requests
+      - name: Post long videos to Facebook
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+        run: python longform_fb.py
+      - name: Save state
+        run: |
+          git config user.name "studio-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add longform_fb_state.json || true
+          git commit -m "longform FB state" || echo "no changes"
+          git push || echo "nothing to push"
